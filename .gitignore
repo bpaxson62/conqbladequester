@@ -1,0 +1,20 @@
+node_modules
+dist
+out
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build output
+release
+*.log
+npm-debug.log*

@@ -1,0 +1,50 @@
+appId: com.yourname.myelectronapp
+productName: My Electron App
+directories:
+  buildResources: build
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+asarUnpack:
+  - resources/**
+
+# --- Windows ---
+win:
+  executableName: my-electron-app
+  target:
+    - target: nsis
+      arch: [x64, arm64]
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+
+# --- macOS ---
+mac:
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+  category: public.app-category.utilities
+  entitlementsInherit: build/entitlements.mac.plist
+  notarize: false
+
+# --- Linux ---
+linux:
+  target:
+    - target: AppImage
+      arch: [x64, arm64]
+    - target: deb
+      arch: [x64, arm64]
+  maintainer: you@example.com
+  category: Utility
+
+npmRebuild: false
+
+publish:
+  provider: github
+  releaseType: draft
