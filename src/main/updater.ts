@@ -1,6 +1,11 @@
-import { app, dialog } from 'electron'
-import { autoUpdater } from 'electron-updater'
+import { dialog } from 'electron'
 import { is } from '@electron-toolkit/utils'
+import electronUpdater from 'electron-updater'
+
+// electron-updater ships CommonJS only; under "type": "module" Node's ESM
+// loader can't destructure a named export from it directly, so pull it off
+// the default export instead.
+const { autoUpdater } = electronUpdater
 
 /**
  * Wires up electron-updater against the GitHub Releases publish target
@@ -74,8 +79,4 @@ export function initAutoUpdater(): void {
     },
     4 * 60 * 60 * 1000
   )
-
-  app.on('before-quit', () => {
-    // no-op placeholder: autoInstallOnAppQuit already handles apply-on-quit
-  })
 }
