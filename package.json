@@ -1,10 +1,10 @@
 {
-  "name": "my-electron-app",
+  "name": "conqbladequester",
   "version": "0.1.0",
   "description": "An open-source cross-platform desktop app built with Electron, Vue 3, and TypeScript.",
   "main": "./out/main/index.js",
   "author": "Brian",
-  "homepage": "https://github.com/YOUR_USERNAME/my-electron-app",
+  "homepage": "https://github.com/bpaxson62/conqbladequester",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -27,13 +27,16 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
-    "vue": "^3.4.38"
+    "vue": "^3.4.38",
+    "electron-updater": "^6.3.4"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-ts": "^2.0.0",
     "@electron-toolkit/tsconfig": "^1.0.1",
     "@rushstack/eslint-patch": "^1.10.4",
     "@types/node": "^20.14.8",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "@vitejs/plugin-vue": "^5.1.2",
     "electron": "^31.3.1",
     "electron-builder": "^24.13.3",
@@ -44,5 +47,9 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.1",
     "vue-tsc": "^2.0.29"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpaxson62/conqbladequester.git"
   }
 }

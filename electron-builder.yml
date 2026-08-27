@@ -47,4 +47,6 @@ npmRebuild: false
 
 publish:
   provider: github
+  owner: bpaxson62
+  repo: conqbladequester
   releaseType: draft

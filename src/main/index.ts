@@ -2,6 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { initAutoUpdater } from './updater'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -48,6 +49,8 @@ app.whenReady().then(() => {
   ipcMain.handle('app:getVersion', () => app.getVersion())
 
   createWindow()
+
+  initAutoUpdater()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window when the dock icon is
