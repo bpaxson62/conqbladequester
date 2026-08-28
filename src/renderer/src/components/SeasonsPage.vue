@@ -173,9 +173,7 @@ const totalMatches = computed(() =>
         @click="activeSeasonId = season.id"
       >
         {{ season.name }}
-        <span
-          v-if="isSeasonComplete(store.unlocksBySeason(season.id))"
-        >✓</span>
+        <span v-if="isSeasonComplete(store.unlocksBySeason(season.id))">✓</span>
         <span
           v-else
           class="tab-quest-count"

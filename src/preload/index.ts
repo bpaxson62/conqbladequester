@@ -28,7 +28,11 @@ const api = {
       challengeId: string
     ): Promise<Unlock | undefined> =>
       ipcRenderer.invoke('unlocks:toggleChallenge', unlockId, stage, challengeId),
-    setStageComplete: (unlockId: string, stage: number, done: boolean): Promise<Unlock | undefined> =>
+    setStageComplete: (
+      unlockId: string,
+      stage: number,
+      done: boolean
+    ): Promise<Unlock | undefined> =>
       ipcRenderer.invoke('unlocks:setStageComplete', unlockId, stage, done),
     setUnlockComplete: (unlockId: string, done: boolean): Promise<Unlock | undefined> =>
       ipcRenderer.invoke('unlocks:setUnlockComplete', unlockId, done),

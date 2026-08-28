@@ -22,7 +22,8 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "test": "echo \"no tests yet\" && exit 0"
+    "validate:data": "node scripts/validate-data.mjs",
+    "test": "npm run validate:data"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",

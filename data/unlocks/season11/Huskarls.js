@@ -4,61 +4,178 @@ module.exports = {
   rewardType: 'unit',
   tier: 1,
   season: 11,
+  prerequisites: [],
   requiredPerStage: 8,
   unitChallenges: [
-    { text: 'Use a trebuchet or interrupt a capture 8 times in Field or Siege Battles of any type.', stage: 1 },
-    { text: 'Get 40 total kills or assists in Field or Siege Battles of any type.', stage: 1 },
-    { text: 'Earn 8 "Cakewalk" badges during Expeditions.', stage: 1 },
-    { text: 'Get an A+ ranking or better in 8 Expedition battles.', stage: 1 },
-    { text: 'Complete 12 Daily Quests.', stage: 1 },
-    { text: 'Complete 12 Fief Quests.', stage: 1 },
-    { text: 'In Field or Siege Battles of any type, win 3 battles in a row or join 5 battles.', stage: 1 },
-    { text: 'Get a Troop Kill Score of 300 or higher with any unit in Field or Siege Battles of any type.', stage: 1 },
-    { text: 'Get an A rating or better in 8 Field or Siege Battles of any type.', stage: 1 },
-    { text: 'You or your group members get 15 A+ or better rankings in Field or Siege Battles of any type.', stage: 1 },
-
-    { text: 'You or your group collectively kill a total of 240 soldiers in 8 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Get an A+ ranking or better in 8 Expedition battles.', stage: 2 },
-    { text: 'Get 40 kills or assists in Free Battles, or get 8 kills or assists in 8 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Complete 12 Fief Quests.', stage: 2 },
-    { text: 'Complete 12 Daily Quests.', stage: 2 },
-    { text: 'Use artillery to kill 30 soldiers or 2 heroes in 8 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Get 5 "Say Cheese" or "Settle the Score" badges in Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Be placed in the top 5 in 8 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'In Field or Siege Battles of any type, win 3 battles in a row or join 5 battles.', stage: 2 },
-    { text: 'Get a Troop Kill Score of 1,000 or higher in 6 Field or Siege Battles of any type.', stage: 2 },
-
-    { text: 'Earn 8 "Cakewalk" badges during Expeditions.', stage: 3 },
-    { text: 'Join 8 Free Battles or win 8 Field or Siege Battles of any type.', stage: 3 },
-    { text: 'Take part in 8 Territory Wars.', stage: 3 },
-    { text: 'Complete 12 Fief Quests.', stage: 3 },
-    { text: 'In Field or Siege Battles of any type, you or your group members get 40 B+ or better rankings or get 8 A+ or better rankings.', stage: 3 },
-    { text: 'Get 6 "No Quarter" or "Grand Bloodbath" badges in Field or Siege Battles of any type.', stage: 3 },
-    { text: 'Get 40 kills or assists in Free Battles, or get 8 kills or assists in 8 Field or Siege Battles of any type.', stage: 3 },
-    { text: 'Get a Troop Kill Score of 300 or higher with any unit in 8 Field or Siege Battles of any type.', stage: 3 },
-    { text: 'Get a kill/death ratio of 1.5 or higher with any unit in 8 Field or Siege Battles of any type.', stage: 3 },
-    { text: 'Use artillery to kill 130 soldiers or 8 heroes in Field or Siege Battles of any type.', stage: 3 },
-
-    { text: 'Complete 12 Fief Quests.', stage: 4 },
-    { text: 'Defeat 1,200 troops during Expeditions.', stage: 4 },
-    { text: 'Get a Troop Kill Score of 600 or more in 8 Ranked battles, or get a Troop Kill Score of 1,000 or more in 8 Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Raise your hero up 10 levels.', stage: 4 },
-    { text: 'In Field or Siege Battles of any type, you or your group members get 40 B+ or better rankings or get 8 A+ or better rankings.', stage: 4 },
-    { text: 'Deploy or destroy an artillery piece in 8 Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Get the "Hat-Trick" or "A Deadly Century" badge in 7 Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Get a kill/death ratio of 1.5 or higher with any unit in 8 Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Get 40 total kills or assists in Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Use Huskarls to attack 10 Rebel Camps of any difficulty and win.', stage: 4 },
-
-    { text: 'Use Huskarls and get a Troop Kill Score of 200 or higher in 8 Field or Siege battles.', stage: 5 },
-    { text: 'Use Huskarls and win 5 Field or Siege battles of any type.', stage: 5 },
-    { text: 'Get 40 total kills or assists in Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Earn 8 "Shatter the Ranks" badges.', stage: 5 },
-    { text: 'Deploy or destroy an artillery piece in 8 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'You or your group collectively kill a total of 240 soldiers in 8 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Complete 12 Fief Quests.', stage: 5 },
-    { text: 'Take part in 8 Territory War battles.', stage: 5 },
-    { text: 'Defeat 20 heroes in Ranked battles, or get the "Grand Bloodbath" badge 4 times in Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Achieve victory at 8 Rebel Camps or Bandit Raids of any difficulty.', stage: 5 }
+    {
+      key: 0,
+      text: 'Use a trebuchet or interrupt a capture 8 times in Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 1,
+      text: 'Get 40 total kills or assists in Field or Siege Battles of any type.',
+      stage: 1
+    },
+    { key: 2, text: 'Earn 8 "Cakewalk" badges during Expeditions.', stage: 1 },
+    { key: 3, text: 'Get an A+ ranking or better in 8 Expedition battles.', stage: 1 },
+    { key: 4, text: 'Complete 12 Daily Quests.', stage: 1 },
+    { key: 5, text: 'Complete 12 Fief Quests.', stage: 1 },
+    {
+      key: 6,
+      text: 'In Field or Siege Battles of any type, win 3 battles in a row or join 5 battles.',
+      stage: 1
+    },
+    {
+      key: 7,
+      text: 'Get a Troop Kill Score of 300 or higher with any unit in Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 8,
+      text: 'Get an A rating or better in 8 Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 9,
+      text: 'You or your group members get 15 A+ or better rankings in Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 0,
+      text: 'You or your group collectively kill a total of 240 soldiers in 8 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    { key: 1, text: 'Get an A+ ranking or better in 8 Expedition battles.', stage: 2 },
+    {
+      key: 2,
+      text: 'Get 40 kills or assists in Free Battles, or get 8 kills or assists in 8 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    { key: 3, text: 'Complete 12 Fief Quests.', stage: 2 },
+    { key: 4, text: 'Complete 12 Daily Quests.', stage: 2 },
+    {
+      key: 5,
+      text: 'Use artillery to kill 30 soldiers or 2 heroes in 8 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    {
+      key: 6,
+      text: 'Get 5 "Say Cheese" or "Settle the Score" badges in Field or Siege Battles of any type.',
+      stage: 2
+    },
+    { key: 7, text: 'Be placed in the top 5 in 8 Field or Siege Battles of any type.', stage: 2 },
+    {
+      key: 8,
+      text: 'In Field or Siege Battles of any type, win 3 battles in a row or join 5 battles.',
+      stage: 2
+    },
+    {
+      key: 9,
+      text: 'Get a Troop Kill Score of 1,000 or higher in 6 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    { key: 0, text: 'Earn 8 "Cakewalk" badges during Expeditions.', stage: 3 },
+    { key: 1, text: 'Join 8 Free Battles or win 8 Field or Siege Battles of any type.', stage: 3 },
+    { key: 2, text: 'Take part in 8 Territory Wars.', stage: 3 },
+    { key: 3, text: 'Complete 12 Fief Quests.', stage: 3 },
+    {
+      key: 4,
+      text: 'In Field or Siege Battles of any type, you or your group members get 40 B+ or better rankings or get 8 A+ or better rankings.',
+      stage: 3
+    },
+    {
+      key: 5,
+      text: 'Get 6 "No Quarter" or "Grand Bloodbath" badges in Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 6,
+      text: 'Get 40 kills or assists in Free Battles, or get 8 kills or assists in 8 Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 7,
+      text: 'Get a Troop Kill Score of 300 or higher with any unit in 8 Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 8,
+      text: 'Get a kill/death ratio of 1.5 or higher with any unit in 8 Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 9,
+      text: 'Use artillery to kill 130 soldiers or 8 heroes in Field or Siege Battles of any type.',
+      stage: 3
+    },
+    { key: 0, text: 'Complete 12 Fief Quests.', stage: 4 },
+    { key: 1, text: 'Defeat 1,200 troops during Expeditions.', stage: 4 },
+    {
+      key: 2,
+      text: 'Get a Troop Kill Score of 600 or more in 8 Ranked battles, or get a Troop Kill Score of 1,000 or more in 8 Field or Siege Battles of any type.',
+      stage: 4
+    },
+    { key: 3, text: 'Raise your hero up 10 levels.', stage: 4 },
+    {
+      key: 4,
+      text: 'In Field or Siege Battles of any type, you or your group members get 40 B+ or better rankings or get 8 A+ or better rankings.',
+      stage: 4
+    },
+    {
+      key: 5,
+      text: 'Deploy or destroy an artillery piece in 8 Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 6,
+      text: 'Get the "Hat-Trick" or "A Deadly Century" badge in 7 Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 7,
+      text: 'Get a kill/death ratio of 1.5 or higher with any unit in 8 Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 8,
+      text: 'Get 40 total kills or assists in Field or Siege Battles of any type.',
+      stage: 4
+    },
+    { key: 9, text: 'Use Huskarls to attack 10 Rebel Camps of any difficulty and win.', stage: 4 },
+    {
+      key: 0,
+      text: 'Use Huskarls and get a Troop Kill Score of 200 or higher in 8 Field or Siege battles.',
+      stage: 5
+    },
+    { key: 1, text: 'Use Huskarls and win 5 Field or Siege battles of any type.', stage: 5 },
+    {
+      key: 2,
+      text: 'Get 40 total kills or assists in Field or Siege Battles of any type.',
+      stage: 5
+    },
+    { key: 3, text: 'Earn 8 "Shatter the Ranks" badges.', stage: 5 },
+    {
+      key: 4,
+      text: 'Deploy or destroy an artillery piece in 8 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    {
+      key: 5,
+      text: 'You or your group collectively kill a total of 240 soldiers in 8 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    { key: 6, text: 'Complete 12 Fief Quests.', stage: 5 },
+    { key: 7, text: 'Take part in 8 Territory War battles.', stage: 5 },
+    {
+      key: 8,
+      text: 'Defeat 20 heroes in Ranked battles, or get the "Grand Bloodbath" badge 4 times in Field or Siege Battles of any type.',
+      stage: 5
+    },
+    {
+      key: 9,
+      text: 'Achieve victory at 8 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 5
+    }
   ]
 }

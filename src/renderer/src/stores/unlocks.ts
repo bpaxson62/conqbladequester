@@ -26,9 +26,15 @@ export const useUnlockStore = defineStore('unlocks', {
       (seasonId: string): boolean =>
         isSeasonComplete(state.unlocks.filter((u) => u.seasonId === seasonId)),
 
-    unlockAvailable: (state) => (unlock: Unlock): boolean => isUnlockAvailable(unlock, state.unlocks),
+    unlockAvailable:
+      (state) =>
+      (unlock: Unlock): boolean =>
+        isUnlockAvailable(unlock, state.unlocks),
 
-    unlockComplete: () => (unlock: Unlock): boolean => isUnlockComplete(unlock)
+    unlockComplete:
+      () =>
+      (unlock: Unlock): boolean =>
+        isUnlockComplete(unlock)
   },
 
   actions: {

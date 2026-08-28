@@ -14,7 +14,7 @@ right now, and what's still locked behind a prerequisite.
 - **Your progress stays local.** No account, no telemetry, no network calls except the update check.
 
 > Unofficial fan project. Not affiliated with, endorsed by, or sponsored by
-> Booming Games or MY.GAMES. *Conqueror's Blade* and all related content are the
+> Booming Games or MY.GAMES. _Conqueror's Blade_ and all related content are the
 > property of their respective owners.
 
 ## Install
@@ -22,11 +22,11 @@ right now, and what's still locked behind a prerequisite.
 Download the installer for your platform from the
 [latest release](https://github.com/bpaxson62/conqbladequester/releases):
 
-| Platform | File |
-| --- | --- |
-| Windows | `conqbladequester-<version>-setup.exe` |
-| macOS | `conqbladequester-<version>-<arch>.dmg` |
-| Linux | `conqbladequester-<version>-<arch>.AppImage` or `.deb` |
+| Platform | File                                                   |
+| -------- | ------------------------------------------------------ |
+| Windows  | `conqbladequester-<version>-setup.exe`                 |
+| macOS    | `conqbladequester-<version>-<arch>.dmg`                |
+| Linux    | `conqbladequester-<version>-<arch>.AppImage` or `.deb` |
 
 macOS builds are currently unsigned — on first launch use **right-click → Open**
 to get past Gatekeeper.
@@ -36,11 +36,11 @@ to get past Gatekeeper.
 Progress lives in a JSON file in your OS user-data directory, separate from the
 app install, so updates never touch it:
 
-| Platform | Path |
-| --- | --- |
-| Windows | `%APPDATA%\CB Quest Log\config.json` |
-| macOS | `~/Library/Application Support/CB Quest Log/config.json` |
-| Linux | `~/.config/CB Quest Log/config.json` |
+| Platform | Path                                                     |
+| -------- | -------------------------------------------------------- |
+| Windows  | `%APPDATA%\CB Quest Log\config.json`                     |
+| macOS    | `~/Library/Application Support/CB Quest Log/config.json` |
+| Linux    | `~/.config/CB Quest Log/config.json`                     |
 
 Running from source (`npm run dev`) uses `conqbladequester` instead of
 `CB Quest Log` in those paths, so your dev and installed progress are separate.
@@ -68,7 +68,7 @@ npm run dev
 ```bash
 npm run lint
 npm run typecheck
-npm test          # placeholder — see Known limitations
+npm test          # validates every quest data file
 ```
 
 ### Build installers
@@ -125,10 +125,9 @@ installs without touching progress.
 Honest list of what isn't done yet:
 
 - **No progress export/import or backup.** Losing `config.json` loses everything.
-- **No test suite.** `npm test` is a placeholder that always passes.
-- **No stored-schema versioning**, so a future breaking change to the save format has no migration path.
+- **No unit tests for app logic.** `npm test` validates the quest data files, but the merge/progress code itself is untested.
 - **Importing a `.js` unlock file executes it** with full Node privileges. Only import data files you wrote or trust — treat them as programs, not documents.
-- **Placeholder app icon**, and no `build/icon.ico` / `build/icon.icns`, so packaged Windows/macOS builds currently show the default Electron icon.
+- **No progress migration mechanism**, so a future breaking change to the save format would need one written by hand.
 - **macOS builds are unsigned**, so auto-update does not work on macOS.
 
 ## License

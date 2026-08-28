@@ -24,24 +24,27 @@ that determines which season an unlock actually belongs to.
 
 ```js
 module.exports = {
-  name: 'Kheshigs',        // required — shown in the app
-  id: 'kheshigs',          // required in practice — see "The id field"
-  rewardType: 'unit',      // 'unit' | 'weapon' | 'item' (default: 'unit')
-  tier: 1,                 // required
-  season: 1,               // required — which season this belongs to
-  prerequisites: [],       // optional, see below — default: []
-  requiredPerStage: 6,     // optional — see "requiredPerStage"
+  name: 'Kheshigs', // required — shown in the app
+  id: 'kheshigs', // required in practice — see "The id field"
+  rewardType: 'unit', // 'unit' | 'weapon' | 'item' (default: 'unit')
+  tier: 1, // required
+  season: 1, // required — which season this belongs to
+  prerequisites: [], // optional, see below — default: []
+  requiredPerStage: 6, // optional — see "requiredPerStage"
   unitChallenges: [
-    { text: 'Defeat 18 bands of wandering rebels.', stage: 1 },
-    { text: 'Win 4 Territory Wars.', stage: 2 },
+    // `key` is a permanent id for this challenge within its stage.
+    // Assign once, never renumber — see "Editing existing files".
+    { key: 0, text: 'Defeat 18 bands of wandering rebels.', stage: 1 },
+    { key: 0, text: 'Win 4 Territory Wars.', stage: 2 },
     // tags is optional — see "Tags" below
-    { text: 'Destroy a siege engine.', stage: 2, tags: ['engine'] },
+    { key: 1, text: 'Destroy a siege engine.', stage: 2, tags: ['engine'] }
     // ...
   ]
 }
 ```
 
-`stage` numbers start at 1 and count up with no gaps.
+`stage` numbers start at 1 and count up with no gaps. Keys are numbered
+per stage, so every stage starts again from 0.
 
 ### The `id` field
 
@@ -65,7 +68,7 @@ How many challenges in a stage a player must tick off for that stage to count
 as complete. The game generally doesn't require all of them — a stage of 12
 challenges might only need 10.
 
-If omitted it defaults to *all* challenges in the stage. Because of that
+If omitted it defaults to _all_ challenges in the stage. Because of that
 default, adding or removing a challenge in a stage that has no explicit
 `requiredPerStage` also moves the completion threshold, which can re-lock
 stages a player had already cleared. Set it explicitly.
@@ -103,34 +106,38 @@ target file's `id`.
 ## Editing existing files (read this)
 
 On every app start, each file here is re-parsed and merged into the player's
-local save. Progress is matched by a challenge id derived from
-`unlockId + stage number + the challenge's position in that stage`:
+local save. Progress is matched by a challenge id built from
+`unlockId + stage number + the challenge's key`:
 
 ```
 kheshigs:s2:0    kheshigs:s2:1    kheshigs:s2:2   ...
 ```
 
-That position is an **array index**. It is not derived from the challenge
-text, so the app cannot tell that a quest moved — it only knows "slot 3 of
-stage 2 was done". This makes some edits safe and others quietly destructive:
+That trailing number is the challenge's **`key`**, not its position in the
+array. It happens to have started life as the position — keys were seeded
+from array order when they were introduced, so existing ids didn't change —
+but from now on the two are independent. Rows can move; keys don't.
 
-| Edit | Result |
-| --- | --- |
-| **Append** a challenge to the end of a stage | Safe. |
-| **Fix the text** of a challenge in place | Safe — the id doesn't depend on text. Typo fixes are fine. |
-| Add a whole new stage | Safe. |
-| **Insert** a challenge anywhere but the end | **Everything after it shifts down one slot.** Each shifted quest inherits the previous occupant's checkmark, and the last one's progress is dropped. |
-| **Delete** a challenge | **Everything after it shifts up one slot**, same mis-attribution in the other direction. |
-| **Reorder** two challenges | **Their completion states swap.** |
-| Change `id` | All progress for that unlock is orphaned; dependent unlocks break. |
+| Edit                                                | Safe?                                                                            |
+| --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **Append** a challenge to a stage (next unused key) | Yes                                                                              |
+| **Fix the text** of a challenge                     | Yes — ids don't depend on text                                                   |
+| **Reorder** challenges within a stage               | Yes, as long as each row keeps its own `key`                                     |
+| **Delete** a challenge                              | Yes — retire its key, don't reuse it                                             |
+| Add a whole new stage                               | Yes                                                                              |
+| **Renumber or reuse a `key`**                       | **No — this silently moves players' completed checkmarks onto the wrong quests** |
+| Change an unlock's `id`                             | **No — orphans all progress for that unit and breaks dependent unlocks**         |
 
-Nothing warns the player when this happens. They just find a quest ticked
-that they never did, and one they did do unticked.
+The one rule: **a `key` is assigned once and never changes.** When you add a
+challenge, give it one higher than the highest key already used in that stage,
+even if that leaves gaps — gaps are completely fine and expected. Never
+"tidy up" keys back into 0,1,2,… order.
 
-**So: only ever append to a stage.** If a stage's contents genuinely need to
-be reordered or trimmed to match the game, that's fine — just understand
-you're resetting that stage for existing players, and say so in the PR so it
-can go out in a release note.
+Run `npm test` before opening a PR. It validates every data file: missing or
+duplicate keys, unresolvable or cross-season prerequisites, impossible
+`requiredPerStage` values, and stage numbering. It cannot detect a _renumbered_
+key, though — that one is on you and your reviewer, which is exactly why keys
+are written explicitly in the file where a diff will show them changing.
 
 ## Season display names (optional)
 

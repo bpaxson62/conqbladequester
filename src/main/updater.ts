@@ -58,7 +58,8 @@ export function initAutoUpdater(): void {
         cancelId: 1,
         title: 'Update ready',
         message: `Version ${info.version} has been downloaded.`,
-        detail: 'Restart the app to apply the update. It will also apply automatically next time you quit.'
+        detail:
+          'Restart the app to apply the update. It will also apply automatically next time you quit.'
       })
       .then(({ response }) => {
         if (response === 0) {

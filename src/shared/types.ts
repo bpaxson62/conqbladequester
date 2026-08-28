@@ -64,5 +64,16 @@ export interface UnlockFileShape {
    * default). Applies uniformly to every stage in this unlock.
    */
   requiredPerStage?: number
-  unitChallenges: { text: string; stage: number; tags?: string[] }[]
+  unitChallenges: {
+    /** Stable identifier for this challenge within its stage. Assigned once
+     *  when the challenge is first added and never changed or reused
+     *  afterwards — it is what a player's saved progress is matched on, so
+     *  renumbering keys silently moves completed checkmarks onto the wrong
+     *  quests. Omitted only in hand-written/imported files, where the
+     *  challenge's array position is used as a fallback. */
+    key?: number
+    text: string
+    stage: number
+    tags?: string[]
+  }[]
 }

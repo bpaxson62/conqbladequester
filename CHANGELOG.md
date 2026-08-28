@@ -19,6 +19,9 @@ First public release.
 - Search match summary panel grouping matching quests by unlock.
 - Auto-update via GitHub Releases (Windows and Linux; macOS builds are unsigned and do not auto-update).
 - Single-instance lock so two copies can't clobber each other's saved progress.
+- Stable per-challenge `key` in every data file. Challenge ids are now built from that key rather than array position, so quest content can be reordered, inserted into, or trimmed without moving players' completed checkmarks onto the wrong quests. Keys were seeded from existing positions, so no progress changed when this landed.
+- `npm test` now validates all quest data (missing/duplicate keys, unresolvable or cross-season prerequisites, impossible `requiredPerStage`, stage numbering) instead of being a no-op.
+- Real app icon, plus the `build/` platform icon set so packaged Windows/macOS builds no longer ship the default Electron logo.
 
 ### Fixed
 

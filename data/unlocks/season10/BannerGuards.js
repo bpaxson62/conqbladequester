@@ -4,64 +4,186 @@ module.exports = {
   rewardType: 'unit',
   tier: 1,
   season: 10,
-  prerequisites: [
-    { unlockId: 'alchemists', requiredStages: 2 }
-  ],
+  prerequisites: [{ unlockId: 'alchemists', requiredStages: 2 }],
   requiredPerStage: 8,
   unitChallenges: [
-    { text: 'Get 20 kills or assists in Free Battles, or get 8 kills or assists in 6 Field or Siege Battles of any type.', stage: 1 },
-    { text: 'Earn a Troop Kill Score of 4,000.', stage: 1 },
-    { text: 'Achieve victory at 6 Rebel Camps or Bandit Raids of any difficulty.', stage: 1 },
-    { text: 'Defeat 12 rebel bands in the open world.', stage: 1 },
-    { text: 'Complete 12 Fief Quests.', stage: 1 },
-    { text: 'In Expeditions, get an A ranking or better 6 times.', stage: 1 },
-    { text: 'In Field or Siege Battles of any type, get a kill/death ratio of 1.5 or higher with any unit 6 times.', stage: 1 },
-    { text: 'Get 5 "No Quarter" or "Grand Bloodbath" badges in Field or Siege Battles of any type.', stage: 1 },
-    { text: 'Destroy or deploy an artillery piece in 6 Field or Siege Battles of any type.', stage: 1 },
-    { text: 'You or your group collectively kill a total of 240 soldiers in 6 Field or Siege Battles of any type.', stage: 1 },
-
-    { text: 'In Field or Siege Battles of any type, use sword infantry units to kill 300 enemy soldiers.', stage: 2 },
-    { text: 'Raise your hero up 10 levels.', stage: 2 },
-    { text: 'Defeat 1,200 troops during Expeditions.', stage: 2 },
-    { text: 'Complete 12 Daily Quests.', stage: 2 },
-    { text: 'Kill 25 enemy heroes in Deathmatch, or earn 5 "No Quarter" badges in Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Earn 40 capture points or interrupt a capture in 7 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Destroy or deploy an artillery piece in 7 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'You or your group collectively kill a total of 8 heroes in 7 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Get a Troop Kill Score of 1,000 or higher in 7 Field or Siege Battles of any type.', stage: 2 },
-    { text: 'Get an A rating or better in 7 Field or Siege Battles of any type.', stage: 2 },
-
-    { text: 'Earn 8 "Cakewalk" badges during Expeditions.', stage: 3 },
-    { text: 'Defeat 12 rebel bands in the open world.', stage: 3 },
-    { text: 'Complete 12 Fief Quests.', stage: 3 },
-    { text: 'Get 25 kills or assists in Free Battles, or get 8 kills or assists in 7 Field or Siege Battles of any type.', stage: 3 },
-    { text: 'In Field or Siege Battles of any type, get 60 iron or better badges, or get 10 silver or better badges.', stage: 3 },
-    { text: 'In Deathmatch, you or your group collectively kill a total of 120 heroes.', stage: 3 },
-    { text: 'Knock over a ladder or acquire 15 capture points in 7 Field or Siege Battles of any type.', stage: 3 },
-    { text: 'Get 5 "Say Cheese" or "Settle the Score" badges in Field or Siege Battles of any type.', stage: 3 },
-    { text: 'In Field or Siege Battles of any type, get a Troop Kill Score of 400 or higher with 8 units.', stage: 3 },
-    { text: 'Get ranked in the top 5 in 7 Field or Siege Battles of any type.', stage: 3 },
-
-    { text: 'Complete 7 Free Battles or win 5 Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Achieve victory at 8 Rebel Camps or Bandit Raids of any difficulty using Banner Guards.', stage: 4 },
-    { text: 'Defeat 1,200 troops during Expeditions.', stage: 4 },
-    { text: 'Raise your hero up 10 levels.', stage: 4 },
-    { text: 'Defeat 12 rebel bands in the open world.', stage: 4 },
-    { text: 'In Field or Siege Battles of any type, you or your group members get 20 A or better rankings or 10 A+ or better rankings.', stage: 4 },
-    { text: 'Use Banner Guards to kill 300 enemy soldiers in Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Get 10 "Quad Kill" or "Grand Bloodbath" badges in Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Use artillery to kill 130 soldiers or 8 heroes in Field or Siege Battles of any type.', stage: 4 },
-    { text: 'Get a Troop Kill Score of 800 or higher in 7 Field or Siege Battles of any type.', stage: 4 },
-
-    { text: 'Destroy or deploy an artillery piece in 7 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Get a Troop Kill Score of 300 or higher with a sword infantry unit, in 7 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Knock over a ladder or acquire 15 capture points in 7 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Get 8 kills or assists in 7 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'You or your group collectively kill a total of 240 soldiers in 7 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'In Field or Siege Battles of any type, get a silver or better badge 10 times.', stage: 5 },
-    { text: 'Get an A rating or better in 6 Ranked Battles or get an A+ rating or better in 8 Field or Siege Battles of any type.', stage: 5 },
-    { text: 'Use Banner Guards and win 8 Expeditions.', stage: 5 },
-    { text: 'Complete 12 Daily Quests.', stage: 5 },
-    { text: 'Search 12 loot sites in the open world.', stage: 5 }
+    {
+      key: 0,
+      text: 'Get 20 kills or assists in Free Battles, or get 8 kills or assists in 6 Field or Siege Battles of any type.',
+      stage: 1
+    },
+    { key: 1, text: 'Earn a Troop Kill Score of 4,000.', stage: 1 },
+    {
+      key: 2,
+      text: 'Achieve victory at 6 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 1
+    },
+    { key: 3, text: 'Defeat 12 rebel bands in the open world.', stage: 1 },
+    { key: 4, text: 'Complete 12 Fief Quests.', stage: 1 },
+    { key: 5, text: 'In Expeditions, get an A ranking or better 6 times.', stage: 1 },
+    {
+      key: 6,
+      text: 'In Field or Siege Battles of any type, get a kill/death ratio of 1.5 or higher with any unit 6 times.',
+      stage: 1
+    },
+    {
+      key: 7,
+      text: 'Get 5 "No Quarter" or "Grand Bloodbath" badges in Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 8,
+      text: 'Destroy or deploy an artillery piece in 6 Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 9,
+      text: 'You or your group collectively kill a total of 240 soldiers in 6 Field or Siege Battles of any type.',
+      stage: 1
+    },
+    {
+      key: 0,
+      text: 'In Field or Siege Battles of any type, use sword infantry units to kill 300 enemy soldiers.',
+      stage: 2
+    },
+    { key: 1, text: 'Raise your hero up 10 levels.', stage: 2 },
+    { key: 2, text: 'Defeat 1,200 troops during Expeditions.', stage: 2 },
+    { key: 3, text: 'Complete 12 Daily Quests.', stage: 2 },
+    {
+      key: 4,
+      text: 'Kill 25 enemy heroes in Deathmatch, or earn 5 "No Quarter" badges in Field or Siege Battles of any type.',
+      stage: 2
+    },
+    {
+      key: 5,
+      text: 'Earn 40 capture points or interrupt a capture in 7 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    {
+      key: 6,
+      text: 'Destroy or deploy an artillery piece in 7 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    {
+      key: 7,
+      text: 'You or your group collectively kill a total of 8 heroes in 7 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    {
+      key: 8,
+      text: 'Get a Troop Kill Score of 1,000 or higher in 7 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    {
+      key: 9,
+      text: 'Get an A rating or better in 7 Field or Siege Battles of any type.',
+      stage: 2
+    },
+    { key: 0, text: 'Earn 8 "Cakewalk" badges during Expeditions.', stage: 3 },
+    { key: 1, text: 'Defeat 12 rebel bands in the open world.', stage: 3 },
+    { key: 2, text: 'Complete 12 Fief Quests.', stage: 3 },
+    {
+      key: 3,
+      text: 'Get 25 kills or assists in Free Battles, or get 8 kills or assists in 7 Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 4,
+      text: 'In Field or Siege Battles of any type, get 60 iron or better badges, or get 10 silver or better badges.',
+      stage: 3
+    },
+    {
+      key: 5,
+      text: 'In Deathmatch, you or your group collectively kill a total of 120 heroes.',
+      stage: 3
+    },
+    {
+      key: 6,
+      text: 'Knock over a ladder or acquire 15 capture points in 7 Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 7,
+      text: 'Get 5 "Say Cheese" or "Settle the Score" badges in Field or Siege Battles of any type.',
+      stage: 3
+    },
+    {
+      key: 8,
+      text: 'In Field or Siege Battles of any type, get a Troop Kill Score of 400 or higher with 8 units.',
+      stage: 3
+    },
+    { key: 9, text: 'Get ranked in the top 5 in 7 Field or Siege Battles of any type.', stage: 3 },
+    {
+      key: 0,
+      text: 'Complete 7 Free Battles or win 5 Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 1,
+      text: 'Achieve victory at 8 Rebel Camps or Bandit Raids of any difficulty using Banner Guards.',
+      stage: 4
+    },
+    { key: 2, text: 'Defeat 1,200 troops during Expeditions.', stage: 4 },
+    { key: 3, text: 'Raise your hero up 10 levels.', stage: 4 },
+    { key: 4, text: 'Defeat 12 rebel bands in the open world.', stage: 4 },
+    {
+      key: 5,
+      text: 'In Field or Siege Battles of any type, you or your group members get 20 A or better rankings or 10 A+ or better rankings.',
+      stage: 4
+    },
+    {
+      key: 6,
+      text: 'Use Banner Guards to kill 300 enemy soldiers in Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 7,
+      text: 'Get 10 "Quad Kill" or "Grand Bloodbath" badges in Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 8,
+      text: 'Use artillery to kill 130 soldiers or 8 heroes in Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 9,
+      text: 'Get a Troop Kill Score of 800 or higher in 7 Field or Siege Battles of any type.',
+      stage: 4
+    },
+    {
+      key: 0,
+      text: 'Destroy or deploy an artillery piece in 7 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    {
+      key: 1,
+      text: 'Get a Troop Kill Score of 300 or higher with a sword infantry unit, in 7 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    {
+      key: 2,
+      text: 'Knock over a ladder or acquire 15 capture points in 7 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    { key: 3, text: 'Get 8 kills or assists in 7 Field or Siege Battles of any type.', stage: 5 },
+    {
+      key: 4,
+      text: 'You or your group collectively kill a total of 240 soldiers in 7 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    {
+      key: 5,
+      text: 'In Field or Siege Battles of any type, get a silver or better badge 10 times.',
+      stage: 5
+    },
+    {
+      key: 6,
+      text: 'Get an A rating or better in 6 Ranked Battles or get an A+ rating or better in 8 Field or Siege Battles of any type.',
+      stage: 5
+    },
+    { key: 7, text: 'Use Banner Guards and win 8 Expeditions.', stage: 5 },
+    { key: 8, text: 'Complete 12 Daily Quests.', stage: 5 },
+    { key: 9, text: 'Search 12 loot sites in the open world.', stage: 5 }
   ]
 }

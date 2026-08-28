@@ -83,7 +83,11 @@ export function canUndoStage(unlock: Unlock, stage: Stage, seasonUnlocks: Unlock
  * stage below the required count — if the stage stays complete anyway
  * (more were checked than required), unchecking one is harmless.
  */
-export function canUncheckChallenge(unlock: Unlock, stage: Stage, seasonUnlocks: Unlock[]): boolean {
+export function canUncheckChallenge(
+  unlock: Unlock,
+  stage: Stage,
+  seasonUnlocks: Unlock[]
+): boolean {
   const doneCount = stage.challenges.filter((c) => c.done).length
   const wouldDropBelowThreshold = doneCount - 1 < stage.requiredCount
   if (!wouldDropBelowThreshold) return true

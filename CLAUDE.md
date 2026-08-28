@@ -16,7 +16,7 @@ multi-stage challenge lists with cross-unlock prerequisites. Built with
 can require unlock A to have N stages completed).
 
 **Nothing about completion is ever stored as a flag.** Stage/unlock/season
-"complete" status is always *derived* from the leaf `Challenge.done`
+"complete" status is always _derived_ from the leaf `Challenge.done`
 booleans, computed in `src/renderer/src/lib/progress.ts`
 (`isStageComplete`, `isUnlockComplete`, `isSeasonComplete`,
 `isUnlockAvailable`, etc). If you're tempted to add a stored `complete`
@@ -67,12 +67,19 @@ field anywhere, don't — recompute it instead.
   the same season. Confirm the target file's actual `id` field before
   wiring one up — a reference to a nonexistent id makes the unlock
   permanently unavailable with no error shown.
-- **Challenge ids are `unlockId:s<stage>:<index>`, where index is the
-  array position.** Progress is matched on that, so within an existing
-  stage you may only APPEND. Inserting, deleting, or reordering silently
-  re-attaches players' checkmarks to the wrong quests. Editing challenge
-  *text* in place is safe (ids don't depend on text), which is why typo
-  fixes are fine. See `data/README.md` for the full table.
+- **Every challenge carries a permanent `key`, and challenge ids are
+  `unlockId:s<stage>:<key>`.** Keys were seeded from array position, so
+  they look like indices, but they are NOT positions — they never change
+  once assigned. Reordering, inserting and deleting are all safe provided
+  each row keeps its own key; a new challenge takes one higher than the
+  highest key already used in that stage, and gaps are expected. Never
+  renumber keys back into 0,1,2,… order: that silently moves players'
+  completed checkmarks onto the wrong quests, and it's the one failure
+  the validator can't catch. Editing challenge _text_ is always safe.
+- **Run `npm test` after touching any data file.** It's
+  `scripts/validate-data.mjs` and it checks missing/duplicate keys,
+  unresolvable or cross-season prerequisites, impossible
+  `requiredPerStage`, and stage numbering.
 - Stage numbers start at 1, no gaps.
 - Optional per-challenge `tags: string[]` — see "Search & tags" below.
 - When transcribing quest text from a screenshot: fix obvious typos
@@ -83,7 +90,7 @@ field anywhere, don't — recompute it instead.
 ## Progress-lock rule (important, easy to get wrong)
 
 A user should never be able to uncheck a stage/unlock's progress if doing
-so would silently invalidate a *later* unlock's or stage's progress that
+so would silently invalidate a _later_ unlock's or stage's progress that
 already depends on it being complete. This is implemented as a **dynamic,
 recomputed-on-every-check guard**, not a stored lock flag — see
 `canUndoStage`, `canUncheckChallenge`, `canUndoUnlock` in `progress.ts`.
@@ -104,7 +111,7 @@ UI.
 
 - Default tags (`DEFAULT_TAG_KEYWORDS`) match one or more loose keywords
   against challenge text — a tag can list multiple keywords (e.g. "Open
-  World" matches "open world", "loot site", *and* "rebel").
+  World" matches "open world", "loot site", _and_ "rebel").
 - Custom tags come from a data file's optional per-challenge `tags`
   array, and show up as extra chips automatically.
 - All tag chips are single-select — picking one clears whichever was

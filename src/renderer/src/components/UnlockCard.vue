@@ -41,9 +41,7 @@ const sortedStages = computed(() => [...props.unlock.stages].sort((a, b) => a.st
 const activeStage = ref<number>(pickDefaultStage())
 function pickDefaultStage(): number {
   const stages = sortedStages.value
-  const current = stages.find(
-    (s) => isStageAvailable(props.unlock, s.stage) && !isStageComplete(s)
-  )
+  const current = stages.find((s) => isStageAvailable(props.unlock, s.stage) && !isStageComplete(s))
   return (current ?? stages[stages.length - 1] ?? stages[0])?.stage ?? 1
 }
 

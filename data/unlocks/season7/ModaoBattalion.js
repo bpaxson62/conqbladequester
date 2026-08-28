@@ -4,64 +4,118 @@ module.exports = {
   rewardType: 'unit',
   tier: 1,
   season: 7,
-  prerequisites: [
-    { unlockId: 'greyhair-garrison', requiredStages: 3 }
-  ],
+  prerequisites: [{ unlockId: 'greyhair-garrison', requiredStages: 3 }],
   requiredPerStage: 8,
   unitChallenges: [
-    { text: 'Push a siege tower to the ramparts or destroy a siege engine in 6 Siege Battles.', stage: 1 },
-    { text: 'In Siege or Field Battles, get an A rating or better 6 times.', stage: 1 },
-    { text: 'Complete 12 Fief Quests.', stage: 1 },
-    { text: 'Earn 3 "Settle the Score" badges.', stage: 1 },
-    { text: 'Join 6 Deathmatches or get ranked in the top 5, 8 times in Field or Siege Battles.', stage: 1 },
-    { text: 'Search 12 loot sites in the open world.', stage: 1 },
-    { text: 'In Field or Siege Battles, get 30 kills or assists.', stage: 1 },
-    { text: 'In Siege Battles, destroy a siege ladder or acquire 15 capture points in 6 battles.', stage: 1 },
-    { text: 'Win 6 Deathmatches.', stage: 1 },
-    { text: 'In Siege Battles, earn the "Hat-Trick" badge 3 times.', stage: 1 },
-
-    { text: 'In Field or Siege Battles, use artillery to kill 160 troops.', stage: 2 },
-    { text: 'Use a trebuchet or interrupt a capture in 7 Siege Battles.', stage: 2 },
-    { text: 'Achieve victory at 7 Rebel Camps or Bandit Raids of any difficulty.', stage: 2 },
-    { text: 'Win 4 Free Battles or join 8 Territory Wars.', stage: 2 },
-    { text: 'Earn 7 "Shatter the Ranks" badges.', stage: 2 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 240 soldiers in 6 battles.', stage: 2 },
-    { text: 'In Field or Siege Battles, get an A rating or better 7 times.', stage: 2 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 7 battles.', stage: 2 },
-    { text: 'Raise your hero 8 levels.', stage: 2 },
-    { text: 'Earn 60 badges.', stage: 2 },
-
-    { text: 'Win 4 Deathmatches or get an S or better ranking in 5 Field or Siege Battles.', stage: 3 },
-    { text: 'Win 4 Ranked Battles.', stage: 3 },
-    { text: 'In Siege or Field Battles, deploy 15 artillery.', stage: 3 },
-    { text: 'Earn the "No Quarter" badge 6 times.', stage: 3 },
-    { text: 'Raise your hero 8 levels.', stage: 3 },
-    { text: 'Take part in 6 Territory Wars.', stage: 3 },
-    { text: 'In Field or Siege Battles, use shortsword & shield units to deal 4,500,000 damage.', stage: 3 },
-    { text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1.5 or above 7 times.", stage: 3 },
-    { text: 'In Field or Siege Battles, get 60 total kills or assists.', stage: 3 },
-    { text: 'Defeat 1,500 troops during Expeditions.', stage: 3 },
-
-    { text: 'Use Modao Battalion to win 7 Expeditions.', stage: 4 },
-    { text: 'Use Modao Battalion to win 4 Ranked Battles.', stage: 4 },
-    { text: 'Raise your hero 8 levels.', stage: 4 },
-    { text: 'Defeat 12 bands of wandering rebels.', stage: 4 },
-    { text: 'In Siege or Field Battles, earn the "Drop Dead" badge 3 times.', stage: 4 },
-    { text: 'Win 3 Field or Siege Battles in a row or win 5 times.', stage: 4 },
-    { text: 'In Siege Battles, get the "Say Cheese" badge 4 times.', stage: 4 },
-    { text: 'In Siege or Field Battles, you or your group members get 45 rankings of B+ or better.', stage: 4 },
-    { text: 'In Field or Siege Battles, use artillery to kill 160 troops.', stage: 4 },
-    { text: 'Win 4 Free Battles or complete 15 Fief Quests.', stage: 4 },
-
-    { text: 'Use a trebuchet or interrupt a capture in 7 Siege Battles.', stage: 5 },
-    { text: 'Earn 7 "Shatter the Ranks" badges.', stage: 5 },
-    { text: 'In Expeditions, take the Modao Battalion into battle and get a rating of A+ or higher 7 times.', stage: 5 },
-    { text: 'In Siege or Field Battles, you (or your group collectively) defeat 60 heroes.', stage: 5 },
-    { text: 'Raise your hero 8 levels.', stage: 5 },
-    { text: 'In Siege or Field Battles, use Modao Battalion to kill 300 soldiers.', stage: 5 },
-    { text: 'Use Modao Battalion in 7 Ranked Battles.', stage: 5 },
-    { text: 'Take part in 6 Territory Wars.', stage: 5 },
-    { text: 'Achieve victory at 7 Rebel Camps or Bandit Raids of any difficulty.', stage: 5 },
-    { text: 'In Siege Battles, deploy or destroy an artillery piece in 7 battles.', stage: 5 }
+    {
+      key: 0,
+      text: 'Push a siege tower to the ramparts or destroy a siege engine in 6 Siege Battles.',
+      stage: 1
+    },
+    { key: 1, text: 'In Siege or Field Battles, get an A rating or better 6 times.', stage: 1 },
+    { key: 2, text: 'Complete 12 Fief Quests.', stage: 1 },
+    { key: 3, text: 'Earn 3 "Settle the Score" badges.', stage: 1 },
+    {
+      key: 4,
+      text: 'Join 6 Deathmatches or get ranked in the top 5, 8 times in Field or Siege Battles.',
+      stage: 1
+    },
+    { key: 5, text: 'Search 12 loot sites in the open world.', stage: 1 },
+    { key: 6, text: 'In Field or Siege Battles, get 30 kills or assists.', stage: 1 },
+    {
+      key: 7,
+      text: 'In Siege Battles, destroy a siege ladder or acquire 15 capture points in 6 battles.',
+      stage: 1
+    },
+    { key: 8, text: 'Win 6 Deathmatches.', stage: 1 },
+    { key: 9, text: 'In Siege Battles, earn the "Hat-Trick" badge 3 times.', stage: 1 },
+    { key: 0, text: 'In Field or Siege Battles, use artillery to kill 160 troops.', stage: 2 },
+    { key: 1, text: 'Use a trebuchet or interrupt a capture in 7 Siege Battles.', stage: 2 },
+    {
+      key: 2,
+      text: 'Achieve victory at 7 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 2
+    },
+    { key: 3, text: 'Win 4 Free Battles or join 8 Territory Wars.', stage: 2 },
+    { key: 4, text: 'Earn 7 "Shatter the Ranks" badges.', stage: 2 },
+    {
+      key: 5,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 240 soldiers in 6 battles.',
+      stage: 2
+    },
+    { key: 6, text: 'In Field or Siege Battles, get an A rating or better 7 times.', stage: 2 },
+    {
+      key: 7,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 7 battles.',
+      stage: 2
+    },
+    { key: 8, text: 'Raise your hero 8 levels.', stage: 2 },
+    { key: 9, text: 'Earn 60 badges.', stage: 2 },
+    {
+      key: 0,
+      text: 'Win 4 Deathmatches or get an S or better ranking in 5 Field or Siege Battles.',
+      stage: 3
+    },
+    { key: 1, text: 'Win 4 Ranked Battles.', stage: 3 },
+    { key: 2, text: 'In Siege or Field Battles, deploy 15 artillery.', stage: 3 },
+    { key: 3, text: 'Earn the "No Quarter" badge 6 times.', stage: 3 },
+    { key: 4, text: 'Raise your hero 8 levels.', stage: 3 },
+    { key: 5, text: 'Take part in 6 Territory Wars.', stage: 3 },
+    {
+      key: 6,
+      text: 'In Field or Siege Battles, use shortsword & shield units to deal 4,500,000 damage.',
+      stage: 3
+    },
+    {
+      key: 7,
+      text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1.5 or above 7 times.",
+      stage: 3
+    },
+    { key: 8, text: 'In Field or Siege Battles, get 60 total kills or assists.', stage: 3 },
+    { key: 9, text: 'Defeat 1,500 troops during Expeditions.', stage: 3 },
+    { key: 0, text: 'Use Modao Battalion to win 7 Expeditions.', stage: 4 },
+    { key: 1, text: 'Use Modao Battalion to win 4 Ranked Battles.', stage: 4 },
+    { key: 2, text: 'Raise your hero 8 levels.', stage: 4 },
+    { key: 3, text: 'Defeat 12 bands of wandering rebels.', stage: 4 },
+    { key: 4, text: 'In Siege or Field Battles, earn the "Drop Dead" badge 3 times.', stage: 4 },
+    { key: 5, text: 'Win 3 Field or Siege Battles in a row or win 5 times.', stage: 4 },
+    { key: 6, text: 'In Siege Battles, get the "Say Cheese" badge 4 times.', stage: 4 },
+    {
+      key: 7,
+      text: 'In Siege or Field Battles, you or your group members get 45 rankings of B+ or better.',
+      stage: 4
+    },
+    { key: 8, text: 'In Field or Siege Battles, use artillery to kill 160 troops.', stage: 4 },
+    { key: 9, text: 'Win 4 Free Battles or complete 15 Fief Quests.', stage: 4 },
+    { key: 0, text: 'Use a trebuchet or interrupt a capture in 7 Siege Battles.', stage: 5 },
+    { key: 1, text: 'Earn 7 "Shatter the Ranks" badges.', stage: 5 },
+    {
+      key: 2,
+      text: 'In Expeditions, take the Modao Battalion into battle and get a rating of A+ or higher 7 times.',
+      stage: 5
+    },
+    {
+      key: 3,
+      text: 'In Siege or Field Battles, you (or your group collectively) defeat 60 heroes.',
+      stage: 5
+    },
+    { key: 4, text: 'Raise your hero 8 levels.', stage: 5 },
+    {
+      key: 5,
+      text: 'In Siege or Field Battles, use Modao Battalion to kill 300 soldiers.',
+      stage: 5
+    },
+    { key: 6, text: 'Use Modao Battalion in 7 Ranked Battles.', stage: 5 },
+    { key: 7, text: 'Take part in 6 Territory Wars.', stage: 5 },
+    {
+      key: 8,
+      text: 'Achieve victory at 7 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 5
+    },
+    {
+      key: 9,
+      text: 'In Siege Battles, deploy or destroy an artillery piece in 7 battles.',
+      stage: 5
+    }
   ]
 }
