@@ -6,7 +6,8 @@ import {
   activeQuests,
   isSeasonComplete,
   seasonActiveQuestCount,
-  sortUnlocksByDependencyDepth
+  sortUnlocksByDependencyDepth,
+  type ActiveQuest
 } from '../lib/progress'
 import { availableTags, challengeHasTag, fuzzyScore } from '../lib/search'
 import UnlockCard from './UnlockCard.vue'
@@ -61,6 +62,14 @@ function toggleTag(tag: string): void {
   activeTag.value = activeTag.value === tag ? null : tag
 }
 
+function matchesSearch(quest: ActiveQuest): boolean {
+  const query = searchQuery.value.trim()
+  const tag = activeTag.value
+  if (tag && !challengeHasTag(quest.challenge, tag)) return false
+  if (query && fuzzyScore(query, quest.challenge.text) === null) return false
+  return true
+}
+
 /**
  * How many of a season's currently-active quests match the search box
  * and selected tags — purely a display count for the season button.
@@ -70,16 +79,48 @@ function toggleTag(tag: string): void {
  * exactly as if search didn't exist.
  */
 function matchCount(seasonId: string): number {
-  const query = searchQuery.value.trim()
-  const tag = activeTag.value
-  if (!query && !tag) return seasonActiveQuestCount(store.unlocksBySeason(seasonId))
-
-  return activeQuests(store.unlocksBySeason(seasonId)).filter((q) => {
-    if (tag && !challengeHasTag(q.challenge, tag)) return false
-    if (query && fuzzyScore(query, q.challenge.text) === null) return false
-    return true
-  }).length
+  if (!searchQuery.value.trim() && !activeTag.value) {
+    return seasonActiveQuestCount(store.unlocksBySeason(seasonId))
+  }
+  return activeQuests(store.unlocksBySeason(seasonId)).filter(matchesSearch).length
 }
+
+// True whenever a search query or a tag filter is actually narrowing
+// results, i.e. there's something to summarize.
+const searchActive = computed(() => searchQuery.value.trim() !== '' || activeTag.value !== null)
+
+interface MatchGroup {
+  unlock: Unlock
+  quests: ActiveQuest[]
+}
+
+// Matching active quests for the current season, grouped by unlock and
+// kept in the same dependency order as the cards below. Display-only —
+// summarizes what search/tags found without touching the tracking UI.
+const matchedQuestsByUnlock = computed<MatchGroup[]>(() => {
+  if (!searchActive.value || !activeSeason.value) return []
+
+  const seasonUnlocks = store.unlocksBySeason(activeSeason.value.id)
+  const matches = activeQuests(seasonUnlocks).filter(matchesSearch)
+
+  const byUnlockId = new Map<string, MatchGroup>()
+  for (const quest of matches) {
+    let group = byUnlockId.get(quest.unlock.id)
+    if (!group) {
+      group = { unlock: quest.unlock, quests: [] }
+      byUnlockId.set(quest.unlock.id, group)
+    }
+    group.quests.push(quest)
+  }
+
+  return orderedUnlocks(activeSeason.value.id)
+    .map((unlock) => byUnlockId.get(unlock.id))
+    .filter((group): group is MatchGroup => !!group)
+})
+
+const totalMatches = computed(() =>
+  matchedQuestsByUnlock.value.reduce((sum, group) => sum + group.quests.length, 0)
+)
 </script>
 
 <template>
@@ -141,6 +182,39 @@ function matchCount(seasonId: string): number {
         >{{ matchCount(season.id) }}</span>
       </button>
     </nav>
+
+    <section
+      v-if="searchActive && activeSeason"
+      class="match-summary"
+    >
+      <h3 class="match-summary-title">
+        {{ totalMatches }} matching quest{{ totalMatches === 1 ? '' : 's' }}
+      </h3>
+      <p
+        v-if="matchedQuestsByUnlock.length === 0"
+        class="empty"
+      >
+        No matching quests in this season.
+      </p>
+      <div
+        v-for="group in matchedQuestsByUnlock"
+        :key="group.unlock.id"
+        class="match-group"
+      >
+        <div class="match-group-title">
+          {{ group.unlock.name }}
+          <span class="match-group-count">{{ group.quests.length }}</span>
+        </div>
+        <ul class="match-list">
+          <li
+            v-for="quest in group.quests"
+            :key="quest.challenge.id"
+          >
+            {{ quest.challenge.text }}
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <section
       v-if="activeSeason"
@@ -283,6 +357,52 @@ function matchCount(seasonId: string): number {
 .season-tab.active .tab-quest-count {
   background: #1e2050;
   color: #c7cbff;
+}
+.match-summary {
+  border: 1px solid #34363b;
+  border-radius: 10px;
+  background: #1e1f22;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.match-summary-title {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #c7cbff;
+}
+.match-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.match-group-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e6e6e6;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.match-group-count {
+  background: #2b2d31;
+  color: #9a9ba0;
+  border-radius: 999px;
+  padding: 0.02rem 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 400;
+}
+.match-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.match-list li {
+  font-size: 0.78rem;
+  color: #b8b9bd;
 }
 .season-header {
   margin: 0 0 0.9rem;
