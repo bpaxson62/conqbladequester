@@ -36,14 +36,17 @@ to get past Gatekeeper.
 Progress lives in a JSON file in your OS user-data directory, separate from the
 app install, so updates never touch it:
 
-| Platform | Path                                                     |
-| -------- | -------------------------------------------------------- |
-| Windows  | `%APPDATA%\CB Quest Log\config.json`                     |
-| macOS    | `~/Library/Application Support/CB Quest Log/config.json` |
-| Linux    | `~/.config/CB Quest Log/config.json`                     |
+| Platform | Path                                                         |
+| -------- | ------------------------------------------------------------ |
+| Windows  | `%APPDATA%\conqbladequester\config.json`                     |
+| macOS    | `~/Library/Application Support/conqbladequester/config.json` |
+| Linux    | `~/.config/conqbladequester/config.json`                     |
 
-Running from source (`npm run dev`) uses `conqbladequester` instead of
-`CB Quest Log` in those paths, so your dev and installed progress are separate.
+The folder is named after the `name` field in `package.json`, not the display
+name: Electron prefers `productName` there if it exists, and this project
+deliberately doesn't set one, keeping `productName` in the packaging config
+where only the installer reads it. A consequence worth knowing is that running
+from source and running an installed build share the same progress file.
 
 There is currently **no in-app export or backup** — if you care about your
 progress, copy that `config.json` somewhere safe. See
@@ -119,6 +122,27 @@ exposed to the renderer.
 The `data/` folder ships alongside the app (`extraResources`) and is merged into
 your local store on every launch, which is how content updates reach existing
 installs without touching progress.
+
+## Linux: wrong icon in the dash
+
+GNOME decides a window's icon by matching it to an installed `.desktop` file,
+not by the icon the app sets on its own window. With nothing to match, it falls
+back to the generic cog-and-diamond `application-x-executable` placeholder.
+
+So a bare `npm run dev`, or a downloaded AppImage that hasn't been integrated
+into the desktop, shows that placeholder no matter what artwork the app ships.
+Installing the `.rpm` (Fedora/RHEL) or `.deb` (Debian/Ubuntu) fixes it, because
+those register a `.desktop` file.
+
+If it's still wrong after installing, the window's `WM_CLASS` likely doesn't
+match the `StartupWMClass` in `electron-builder.yml`. Find the real value with
+`xprop WM_CLASS` (X11) and set `linux.desktop.StartupWMClass` to it. A stale
+icon cache can also hold on:
+
+```bash
+update-desktop-database ~/.local/share/applications
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+```
 
 ## Known limitations
 
