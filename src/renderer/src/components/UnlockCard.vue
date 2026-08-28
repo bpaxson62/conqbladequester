@@ -5,6 +5,7 @@ import {
   canUncheckChallenge,
   canUndoStage,
   canUndoUnlock,
+  completedStageCount,
   isStageAvailable,
   isStageComplete,
   isUnlockComplete,
@@ -127,16 +128,18 @@ function isMatched(challenge: Challenge): boolean {
         <span class="reward-icon">{{ rewardIcon[unlock.rewardType] ?? '🎁' }}</span>
         <div>
           <h3>{{ unlock.name }}</h3>
-          <p
-            v-if="isUnlockComplete(unlock) || !available"
-            class="meta"
-          >
+          <p class="meta">
+            <span
+              v-if="!isUnlockComplete(unlock)"
+              class="stage-progress"
+              :class="{ started: completedStageCount(unlock) > 0 }"
+            >{{ completedStageCount(unlock) }} / {{ unlock.stages.length }} stages</span>
             <span
               v-if="isUnlockComplete(unlock)"
               class="badge complete"
             >Complete</span>
             <span
-              v-else
+              v-else-if="!available"
               class="badge locked"
             >Locked</span>
           </p>
@@ -275,6 +278,12 @@ h3 {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+.stage-progress {
+  font-variant-numeric: tabular-nums;
+}
+.stage-progress.started {
+  color: #cfd2d8;
 }
 .badge {
   padding: 0.05rem 0.5rem;
