@@ -1,35 +1,80 @@
-# My Electron App
+# CB Quest Log
 
-An open-source, cross-platform desktop app built with [Electron](https://www.electronjs.org/), [Vue 3](https://vuejs.org/), and TypeScript, using [electron-vite](https://electron-vite.org/) for the dev/build tooling and [electron-builder](https://www.electron.build/) for packaging installers.
+An open-source desktop tracker for **Conqueror's Blade** seasonal unit unlocks.
 
-## Requirements
+Each season gates its units behind multi-stage challenge lists, with later units
+requiring earlier ones to be partly finished first. CB Quest Log keeps that whole
+dependency tree in one place: what you've cleared, what's available to work on
+right now, and what's still locked behind a prerequisite.
 
-- [Node.js](https://nodejs.org/) 20+
-- npm 10+
+- **Tracks the full unlock chain** — seasons, units, stages, and per-stage challenge lists, including cross-unit prerequisites.
+- **Nothing is stored as "complete"** — stage, unit and season completion are always derived from the individual challenges you tick off, so unchecking one thing never silently resets another.
+- **Search and tag filtering** across every quest currently active in a season.
+- **Ships with the quest data built in** — new and corrected content arrives with app updates; your progress is never overwritten.
+- **Your progress stays local.** No account, no telemetry, no network calls except the update check.
 
-## Project setup
+> Unofficial fan project. Not affiliated with, endorsed by, or sponsored by
+> Booming Games or MY.GAMES. _Conqueror's Blade_ and all related content are the
+> property of their respective owners.
+
+## Install
+
+Download the installer for your platform from the
+[latest release](https://github.com/bpaxson62/conqbladequester/releases):
+
+| Platform | File                                                   |
+| -------- | ------------------------------------------------------ |
+| Windows  | `conqbladequester-<version>-setup.exe`                 |
+| macOS    | `conqbladequester-<version>-<arch>.dmg`                |
+| Linux    | `conqbladequester-<version>-<arch>.AppImage` or `.deb` |
+
+macOS builds are currently unsigned — on first launch use **right-click → Open**
+to get past Gatekeeper.
+
+## Where your progress is saved
+
+Progress lives in a JSON file in your OS user-data directory, separate from the
+app install, so updates never touch it:
+
+| Platform | Path                                                         |
+| -------- | ------------------------------------------------------------ |
+| Windows  | `%APPDATA%\conqbladequester\config.json`                     |
+| macOS    | `~/Library/Application Support/conqbladequester/config.json` |
+| Linux    | `~/.config/conqbladequester/config.json`                     |
+
+The folder is named after the `name` field in `package.json`, not the display
+name: Electron prefers `productName` there if it exists, and this project
+deliberately doesn't set one, keeping `productName` in the packaging config
+where only the installer reads it. A consequence worth knowing is that running
+from source and running an installed build share the same progress file.
+
+There is currently **no in-app export or backup** — if you care about your
+progress, copy that `config.json` somewhere safe. See
+[Known limitations](#known-limitations).
+
+## Contributing quest data
+
+Quest content is plain data files under `data/unlocks/`, one per unit — no app
+changes needed to add a season. See **[data/README.md](./data/README.md)** for the
+file format and, importantly, the rules about editing existing files without
+corrupting players' saved progress.
+
+## Development
+
+Requires [Node.js](https://nodejs.org/) 20+ and npm 10+.
 
 ```bash
 npm install
-```
-
-## Develop
-
-Runs the app in dev mode with hot reload for the renderer.
-
-```bash
 npm run dev
 ```
-
-## Lint, typecheck, test
 
 ```bash
 npm run lint
 npm run typecheck
-npm test
+npm test          # validates every quest data file
 ```
 
-## Build installers
+### Build installers
 
 ```bash
 # current platform, unpacked (fast, for local testing)
@@ -41,11 +86,14 @@ npm run build:mac     # .dmg
 npm run build:linux   # .AppImage + .deb
 ```
 
-Cross-compiling for another OS from your machine is possible in some cases (electron-builder docs cover this) but the CI workflow below is the reliable way to get all three platforms built.
+CI is the reliable way to produce all three platforms; cross-compiling locally
+works only in some cases.
 
-## Releasing
+### Releasing
 
-Push a tag matching `v*` (e.g. `v0.1.0`) and GitHub Actions (`.github/workflows/build.yml`) builds installers for Windows, macOS, and Linux and attaches them as a **draft** GitHub Release. Review the draft, edit the release notes, and publish it manually.
+Push a tag matching `v*` and GitHub Actions builds installers for all three
+platforms and attaches them to a **draft** GitHub Release. Review, write the
+notes, and publish it manually — auto-update clients only see it once published.
 
 ```bash
 git tag v0.1.0
@@ -56,18 +104,55 @@ git push origin v0.1.0
 
 ```
 src/
-  main/        # Electron main process (Node.js side — window/app lifecycle)
-  preload/     # Preload scripts — the only bridge between main and renderer
-  renderer/    # Vue 3 app — the UI, sandboxed, no direct Node access
-resources/     # App icon and other packaged assets
-build/         # electron-builder resources (entitlements, icons for packaging)
+  main/        # Electron main process — window/app lifecycle, store, IPC
+  preload/     # The only bridge between main and renderer
+  renderer/    # Vue 3 UI — no direct Node access
+  shared/      # Types shared across the process boundary
+data/
+  unlocks/     # Quest content, grouped into per-season folders
+resources/     # Runtime assets (Linux window icon)
+build/         # electron-builder packaging resources
 ```
 
-Main and renderer are intentionally isolated (`contextIsolation: true`, `nodeIntegration: false`). Anything the UI needs from the OS/filesystem goes through a narrow, explicit API defined in `src/preload/index.ts` and exposed via `contextBridge` — never expose `ipcRenderer` or Node APIs directly to the renderer.
+Main and renderer are isolated (`contextIsolation: true`,
+`nodeIntegration: false`). Anything the UI needs from the OS goes through the
+narrow API in `src/preload/index.ts` — `ipcRenderer` and Node APIs are never
+exposed to the renderer.
 
-## Icon
+The `data/` folder ships alongside the app (`extraResources`) and is merged into
+your local store on every launch, which is how content updates reach existing
+installs without touching progress.
 
-`resources/icon.png` is a placeholder — replace it with your app's real icon before your first release. electron-builder derives the platform-specific formats (`.ico` for Windows, `.icns` for macOS) from it automatically in most setups; see the [electron-builder icon docs](https://www.electron.build/icons) if you want to provide per-platform icons explicitly.
+## Linux: wrong icon in the dash
+
+GNOME decides a window's icon by matching it to an installed `.desktop` file,
+not by the icon the app sets on its own window. With nothing to match, it falls
+back to the generic cog-and-diamond `application-x-executable` placeholder.
+
+So a bare `npm run dev`, or a downloaded AppImage that hasn't been integrated
+into the desktop, shows that placeholder no matter what artwork the app ships.
+Installing the `.rpm` (Fedora/RHEL) or `.deb` (Debian/Ubuntu) fixes it, because
+those register a `.desktop` file.
+
+If it's still wrong after installing, the window's `WM_CLASS` likely doesn't
+match the `StartupWMClass` in `electron-builder.yml`. Find the real value with
+`xprop WM_CLASS` (X11) and set `linux.desktop.StartupWMClass` to it. A stale
+icon cache can also hold on:
+
+```bash
+update-desktop-database ~/.local/share/applications
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+```
+
+## Known limitations
+
+Honest list of what isn't done yet:
+
+- **No progress export/import or backup.** Losing `config.json` loses everything.
+- **No unit tests for app logic.** `npm test` validates the quest data files, but the merge/progress code itself is untested.
+- **Importing a `.js` unlock file executes it** with full Node privileges. Only import data files you wrote or trust — treat them as programs, not documents.
+- **No progress migration mechanism**, so a future breaking change to the save format would need one written by hand.
+- **macOS builds are unsigned**, so auto-update does not work on macOS.
 
 ## License
 

@@ -20,7 +20,11 @@ interface Api {
       stage: number,
       challengeId: string
     ) => Promise<Unlock | undefined>
-    setStageComplete: (unlockId: string, stage: number, done: boolean) => Promise<Unlock | undefined>
+    setStageComplete: (
+      unlockId: string,
+      stage: number,
+      done: boolean
+    ) => Promise<Unlock | undefined>
     setUnlockComplete: (unlockId: string, done: boolean) => Promise<Unlock | undefined>
     import: (seasonId: string) => Promise<ImportResult>
   }

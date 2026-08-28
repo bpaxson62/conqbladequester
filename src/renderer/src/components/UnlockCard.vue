@@ -5,6 +5,7 @@ import {
   canUncheckChallenge,
   canUndoStage,
   canUndoUnlock,
+  completedStageCount,
   isStageAvailable,
   isStageComplete,
   isUnlockComplete,
@@ -41,9 +42,7 @@ const sortedStages = computed(() => [...props.unlock.stages].sort((a, b) => a.st
 const activeStage = ref<number>(pickDefaultStage())
 function pickDefaultStage(): number {
   const stages = sortedStages.value
-  const current = stages.find(
-    (s) => isStageAvailable(props.unlock, s.stage) && !isStageComplete(s)
-  )
+  const current = stages.find((s) => isStageAvailable(props.unlock, s.stage) && !isStageComplete(s))
   return (current ?? stages[stages.length - 1] ?? stages[0])?.stage ?? 1
 }
 
@@ -130,7 +129,11 @@ function isMatched(challenge: Challenge): boolean {
         <div>
           <h3>{{ unlock.name }}</h3>
           <p class="meta">
-            Tier {{ unlock.tier }}
+            <span
+              v-if="!isUnlockComplete(unlock)"
+              class="stage-progress"
+              :class="{ started: completedStageCount(unlock) > 0 }"
+            >{{ completedStageCount(unlock) }} / {{ unlock.stages.length }} stages</span>
             <span
               v-if="isUnlockComplete(unlock)"
               class="badge complete"
@@ -275,6 +278,12 @@ h3 {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+.stage-progress {
+  font-variant-numeric: tabular-nums;
+}
+.stage-progress.started {
+  color: #cfd2d8;
 }
 .badge {
   padding: 0.05rem 0.5rem;

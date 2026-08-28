@@ -1,87 +1,171 @@
 module.exports = {
   name: "Liao's Rangers",
+  id: 'liao-s-rangers',
   rewardType: 'unit',
   tier: 1,
   season: 5,
   prerequisites: [{ unlockId: 'armiger-lancers', requiredStages: 3 }],
   requiredPerStage: 6,
   unitChallenges: [
-    { text: 'In Siege or Field Battles, get ranked in the top 5 9 times.', stage: 1 },
-    { text: 'In Siege or Field Battles, use cavalry units 9 times.', stage: 1 },
-    { text: 'Take part in 8 Territory Wars.', stage: 1 },
-    { text: 'Earn 12 "Shatter the Ranks" badges.', stage: 1 },
-    { text: 'Defeat 25 rebel or marauder bands in the open world.', stage: 1 },
-    { text: 'Win 6 Ranked Battles.', stage: 1 },
-    { text: 'In Siege Battles, get the "Say Cheese" badge 6 times.', stage: 1 },
-    { text: 'Raise your hero up 12 levels.', stage: 1 },
-    { text: "In Field or Siege Battles, have any unit's kill/death ratio reach 1 or above 9 times.", stage: 1 },
-    { text: 'In Field or Siege Battles, use charge-type skills to kill 180 enemy soldiers.', stage: 1 },
-    { text: 'In Siege or Field Battles, deal 600,000 Critical damage.', stage: 1 },
-    { text: 'In Field or Siege Battles, kill 20 heroes.', stage: 1 },
-
-    { text: 'In Siege or Field Battles, earn 10 "A Deadly Century" badges.', stage: 2 },
-    { text: 'Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty.', stage: 2 },
-    { text: 'Win 6 Free Battles.', stage: 2 },
-    { text: 'In Free Battles, deal 400,000 Critical damage.', stage: 2 },
-    { text: 'Win 6 Deathmatches.', stage: 2 },
-    { text: 'In Ranked Battles, get an A ranking or better 8 times.', stage: 2 },
-    { text: 'Win 6 Field or Siege Battles.', stage: 2 },
-    { text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1 or above 10 times.", stage: 2 },
-    { text: 'In Siege or Field Battles, you (or your group collectively) defeat 70 heroes.', stage: 2 },
-    { text: 'In Siege Battles, destroy a siege ladder or acquire 15 capture points in 10 battles.', stage: 2 },
-    { text: 'Push a siege tower to the ramparts or destroy a siege engine in 10 Siege Battles.', stage: 2 },
-    { text: 'Use four infantry units from different eras in a Siege or Field battle 10 times.', stage: 2 },
-
-    { text: 'Earn 10 "Shatter the Ranks" badges.', stage: 3 },
-    { text: 'Take part in 8 Territory Wars.', stage: 3 },
-    { text: 'In Free Battles, get an A ranking or better 8 times.', stage: 3 },
-    { text: 'In Expeditions, use Fire Lancers and win 10 times.', stage: 3 },
-    { text: 'Earn 8 "No Quarter" badges.', stage: 3 },
-    { text: 'Win 6 Ranked Battles.', stage: 3 },
-    { text: 'Defeat 25 rebel or marauder bands in the open world.', stage: 3 },
-    { text: 'In Field or Siege Battles, use artillery to kill 220 troops.', stage: 3 },
-    { text: 'In Siege or Field Battles, use cavalry units and win 6 times.', stage: 3 },
-    { text: 'In Siege or Field Battles, you or your group collectively kills a total of 8 heroes in 10 battles.', stage: 3 },
-    { text: 'In Siege or Field Battles, get an A rating or better 8 times.', stage: 3 },
-    { text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 10 battles.', stage: 3 },
-
-    { text: 'In 8 Siege Battles, destroy a siege engine or get 40 capture points.', stage: 4 },
-    { text: 'In Ranked Battles, get an A ranking or better 10 times.', stage: 4 },
-    { text: 'In Siege Battles, get the "Say Cheese" badge 6 times.', stage: 4 },
-    { text: 'Win 6 Free Battles.', stage: 4 },
-    { text: 'Take part in 8 Territory Wars.', stage: 4 },
-    { text: "Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty using Fire Lancers.", stage: 4 },
-    { text: 'In Siege or Field Battles, use cavalry units and get a K/D ratio greater than 1 10 times.', stage: 4 },
-    { text: 'In Siege or Field Battles, get ranked in top 5 9 times.', stage: 4 },
-    { text: 'In Field or Siege Battles, kill 750 troops.', stage: 4 },
-    { text: 'Win 6 Field or Siege Battles.', stage: 4 },
-    { text: 'In Field or Siege Battles, get 50 assists or kills.', stage: 4 },
-    { text: 'Earn 10 "Cakewalk" badges during Expeditions.', stage: 4 },
-
-    { text: 'Raise your hero up 12 levels.', stage: 5 },
-    { text: 'Win 8 Expeditions.', stage: 5 },
-    { text: 'Complete 20 Fief Quests.', stage: 5 },
-    { text: "Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty using Liao's Rangers.", stage: 5 },
-    { text: "In Free Battles, use Liao's Rangers and win 6 times.", stage: 5 },
-    { text: "In Ranked Battles, your Liao's Rangers get a K/D ratio of 1 or higher 10 times.", stage: 5 },
-    { text: 'In Siege or Field Battles, you or your group collectively kills a total of 240 soldiers in 12 battles.', stage: 5 },
-    { text: 'Use a trebuchet or interrupt a capture in 12 Siege Battles.', stage: 5 },
-    { text: 'In Siege Battles, destroy a siege ladder or acquire 15 capture points in 11 battles.', stage: 5 },
-    { text: 'In Siege or Field Battles, get an S rating or better 8 times.', stage: 5 },
-    { text: "In Siege or Field Battles, use Liao's Rangers 10 times.", stage: 5 },
-    { text: 'Push a siege tower to the ramparts or destroy a siege engine in 8 Siege Battles.', stage: 5 },
-
-    { text: 'Win 10 Expeditions.', stage: 6 },
-    { text: "In Ranked Battles, use Liao's Rangers and win 6 times.", stage: 6 },
-    { text: 'Earn 8 "No Quarter" badges.', stage: 6 },
-    { text: 'Take part in 6 Territory Wars.', stage: 6 },
-    { text: 'In Deathmatch, get an A ranking or better 7 times.', stage: 6 },
-    { text: 'Raise your hero up 12 levels.', stage: 6 },
-    { text: 'Use four units from different eras in a Siege or Field battle 6 times and win.', stage: 6 },
-    { text: 'In Siege or Field Battles, you or your group collectively kills a total of 8 heroes in 12 battles.', stage: 6 },
-    { text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 12 battles.', stage: 6 },
-    { text: 'In Siege or Field Battles, you or your group members get 60 rankings of B+ or better.', stage: 6 },
-    { text: 'In Field or Siege Battles, use artillery to kill 280 troops.', stage: 6 },
-    { text: "In Siege or Field Battles, use Liao's Rangers and win 8 times.", stage: 6 }
+    { key: 0, text: 'In Siege or Field Battles, get ranked in the top 5 9 times.', stage: 1 },
+    { key: 1, text: 'In Siege or Field Battles, use cavalry units 9 times.', stage: 1 },
+    { key: 2, text: 'Take part in 8 Territory Wars.', stage: 1 },
+    { key: 3, text: 'Earn 12 "Shatter the Ranks" badges.', stage: 1 },
+    { key: 4, text: 'Defeat 25 rebel or marauder bands in the open world.', stage: 1 },
+    { key: 5, text: 'Win 6 Ranked Battles.', stage: 1 },
+    { key: 6, text: 'In Siege Battles, get the "Say Cheese" badge 6 times.', stage: 1 },
+    { key: 7, text: 'Raise your hero up 12 levels.', stage: 1 },
+    {
+      key: 8,
+      text: "In Field or Siege Battles, have any unit's kill/death ratio reach 1 or above 9 times.",
+      stage: 1
+    },
+    {
+      key: 9,
+      text: 'In Field or Siege Battles, use charge-type skills to kill 180 enemy soldiers.',
+      stage: 1
+    },
+    { key: 10, text: 'In Siege or Field Battles, deal 600,000 Critical damage.', stage: 1 },
+    { key: 11, text: 'In Field or Siege Battles, kill 20 heroes.', stage: 1 },
+    { key: 0, text: 'In Siege or Field Battles, earn 10 "A Deadly Century" badges.', stage: 2 },
+    {
+      key: 1,
+      text: 'Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 2
+    },
+    { key: 2, text: 'Win 6 Free Battles.', stage: 2 },
+    { key: 3, text: 'In Free Battles, deal 400,000 Critical damage.', stage: 2 },
+    { key: 4, text: 'Win 6 Deathmatches.', stage: 2 },
+    { key: 5, text: 'In Ranked Battles, get an A ranking or better 8 times.', stage: 2 },
+    { key: 6, text: 'Win 6 Field or Siege Battles.', stage: 2 },
+    {
+      key: 7,
+      text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1 or above 10 times.",
+      stage: 2
+    },
+    {
+      key: 8,
+      text: 'In Siege or Field Battles, you (or your group collectively) defeat 70 heroes.',
+      stage: 2
+    },
+    {
+      key: 9,
+      text: 'In Siege Battles, destroy a siege ladder or acquire 15 capture points in 10 battles.',
+      stage: 2
+    },
+    {
+      key: 10,
+      text: 'Push a siege tower to the ramparts or destroy a siege engine in 10 Siege Battles.',
+      stage: 2
+    },
+    {
+      key: 11,
+      text: 'Use four infantry units from different eras in a Siege or Field battle 10 times.',
+      stage: 2
+    },
+    { key: 0, text: 'Earn 10 "Shatter the Ranks" badges.', stage: 3 },
+    { key: 1, text: 'Take part in 8 Territory Wars.', stage: 3 },
+    { key: 2, text: 'In Free Battles, get an A ranking or better 8 times.', stage: 3 },
+    { key: 3, text: 'In Expeditions, use Fire Lancers and win 10 times.', stage: 3 },
+    { key: 4, text: 'Earn 8 "No Quarter" badges.', stage: 3 },
+    { key: 5, text: 'Win 6 Ranked Battles.', stage: 3 },
+    { key: 6, text: 'Defeat 25 rebel or marauder bands in the open world.', stage: 3 },
+    { key: 7, text: 'In Field or Siege Battles, use artillery to kill 220 troops.', stage: 3 },
+    { key: 8, text: 'In Siege or Field Battles, use cavalry units and win 6 times.', stage: 3 },
+    {
+      key: 9,
+      text: 'In Siege or Field Battles, you or your group collectively kills a total of 8 heroes in 10 battles.',
+      stage: 3
+    },
+    { key: 10, text: 'In Siege or Field Battles, get an A rating or better 8 times.', stage: 3 },
+    {
+      key: 11,
+      text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 10 battles.',
+      stage: 3
+    },
+    {
+      key: 0,
+      text: 'In 8 Siege Battles, destroy a siege engine or get 40 capture points.',
+      stage: 4
+    },
+    { key: 1, text: 'In Ranked Battles, get an A ranking or better 10 times.', stage: 4 },
+    { key: 2, text: 'In Siege Battles, get the "Say Cheese" badge 6 times.', stage: 4 },
+    { key: 3, text: 'Win 6 Free Battles.', stage: 4 },
+    { key: 4, text: 'Take part in 8 Territory Wars.', stage: 4 },
+    {
+      key: 5,
+      text: 'Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty using Fire Lancers.',
+      stage: 4
+    },
+    {
+      key: 6,
+      text: 'In Siege or Field Battles, use cavalry units and get a K/D ratio greater than 1 10 times.',
+      stage: 4
+    },
+    { key: 7, text: 'In Siege or Field Battles, get ranked in top 5 9 times.', stage: 4 },
+    { key: 8, text: 'In Field or Siege Battles, kill 750 troops.', stage: 4 },
+    { key: 9, text: 'Win 6 Field or Siege Battles.', stage: 4 },
+    { key: 10, text: 'In Field or Siege Battles, get 50 assists or kills.', stage: 4 },
+    { key: 11, text: 'Earn 10 "Cakewalk" badges during Expeditions.', stage: 4 },
+    { key: 0, text: 'Raise your hero up 12 levels.', stage: 5 },
+    { key: 1, text: 'Win 8 Expeditions.', stage: 5 },
+    { key: 2, text: 'Complete 20 Fief Quests.', stage: 5 },
+    {
+      key: 3,
+      text: "Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty using Liao's Rangers.",
+      stage: 5
+    },
+    { key: 4, text: "In Free Battles, use Liao's Rangers and win 6 times.", stage: 5 },
+    {
+      key: 5,
+      text: "In Ranked Battles, your Liao's Rangers get a K/D ratio of 1 or higher 10 times.",
+      stage: 5
+    },
+    {
+      key: 6,
+      text: 'In Siege or Field Battles, you or your group collectively kills a total of 240 soldiers in 12 battles.',
+      stage: 5
+    },
+    { key: 7, text: 'Use a trebuchet or interrupt a capture in 12 Siege Battles.', stage: 5 },
+    {
+      key: 8,
+      text: 'In Siege Battles, destroy a siege ladder or acquire 15 capture points in 11 battles.',
+      stage: 5
+    },
+    { key: 9, text: 'In Siege or Field Battles, get an S rating or better 8 times.', stage: 5 },
+    { key: 10, text: "In Siege or Field Battles, use Liao's Rangers 10 times.", stage: 5 },
+    {
+      key: 11,
+      text: 'Push a siege tower to the ramparts or destroy a siege engine in 8 Siege Battles.',
+      stage: 5
+    },
+    { key: 0, text: 'Win 10 Expeditions.', stage: 6 },
+    { key: 1, text: "In Ranked Battles, use Liao's Rangers and win 6 times.", stage: 6 },
+    { key: 2, text: 'Earn 8 "No Quarter" badges.', stage: 6 },
+    { key: 3, text: 'Take part in 6 Territory Wars.', stage: 6 },
+    { key: 4, text: 'In Deathmatch, get an A ranking or better 7 times.', stage: 6 },
+    { key: 5, text: 'Raise your hero up 12 levels.', stage: 6 },
+    {
+      key: 6,
+      text: 'Use four units from different eras in a Siege or Field battle 6 times and win.',
+      stage: 6
+    },
+    {
+      key: 7,
+      text: 'In Siege or Field Battles, you or your group collectively kills a total of 8 heroes in 12 battles.',
+      stage: 6
+    },
+    {
+      key: 8,
+      text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 12 battles.',
+      stage: 6
+    },
+    {
+      key: 9,
+      text: 'In Siege or Field Battles, you or your group members get 60 rankings of B+ or better.',
+      stage: 6
+    },
+    { key: 10, text: 'In Field or Siege Battles, use artillery to kill 280 troops.', stage: 6 },
+    { key: 11, text: "In Siege or Field Battles, use Liao's Rangers and win 8 times.", stage: 6 }
   ]
 }

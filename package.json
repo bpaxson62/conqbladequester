@@ -1,7 +1,7 @@
 {
   "name": "conqbladequester",
   "version": "0.1.0",
-  "description": "An open-source cross-platform desktop app built with Electron, Vue 3, and TypeScript.",
+  "description": "A desktop quest tracker for Conqueror's Blade seasonal unit unlocks.",
   "main": "./out/main/index.js",
   "author": "Brian",
   "homepage": "https://github.com/bpaxson62/conqbladequester",
@@ -22,7 +22,8 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "test": "echo \"no tests yet\" && exit 0"
+    "validate:data": "node scripts/validate-data.mjs",
+    "test": "npm run validate:data"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",

@@ -32,7 +32,11 @@ export interface Unlock {
   id: string
   name: string
   rewardType: RewardType
-  tier: number
+  /** Carried over from the original data format and never populated — every
+   *  bundled file says 1. Nothing reads it; it is no longer displayed. Kept
+   *  optional so a file *can* record a real unit tier later without the
+   *  format forcing a meaningless value on every unlock. */
+  tier?: number
   seasonId: string
   /** Empty = available from the start of the season (no prior unlock needed). */
   prerequisites: Prerequisite[]
@@ -55,7 +59,8 @@ export interface UnlockFileShape {
   id?: string
   name?: string
   rewardType?: RewardType
-  tier: number
+  /** Optional — see `tier` on Unlock. */
+  tier?: number
   season: number
   prerequisites?: { unlockId: string; requiredStages: number }[]
   /**
@@ -64,5 +69,16 @@ export interface UnlockFileShape {
    * default). Applies uniformly to every stage in this unlock.
    */
   requiredPerStage?: number
-  unitChallenges: { text: string; stage: number; tags?: string[] }[]
+  unitChallenges: {
+    /** Stable identifier for this challenge within its stage. Assigned once
+     *  when the challenge is first added and never changed or reused
+     *  afterwards — it is what a player's saved progress is matched on, so
+     *  renumbering keys silently moves completed checkmarks onto the wrong
+     *  quests. Omitted only in hand-written/imported files, where the
+     *  challenge's array position is used as a fallback. */
+    key?: number
+    text: string
+    stage: number
+    tags?: string[]
+  }[]
 }

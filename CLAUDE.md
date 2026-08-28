@@ -16,7 +16,7 @@ multi-stage challenge lists with cross-unlock prerequisites. Built with
 can require unlock A to have N stages completed).
 
 **Nothing about completion is ever stored as a flag.** Stage/unlock/season
-"complete" status is always *derived* from the leaf `Challenge.done`
+"complete" status is always _derived_ from the leaf `Challenge.done`
 booleans, computed in `src/renderer/src/lib/progress.ts`
 (`isStageComplete`, `isUnlockComplete`, `isSeasonComplete`,
 `isUnlockAvailable`, etc). If you're tempted to add a stored `complete`
@@ -51,14 +51,35 @@ field anywhere, don't — recompute it instead.
 
 ## Conventions to follow when adding/editing unlock data
 
-- `requiredPerStage: 6` is the established convention for every current
-  unlock, regardless of how many challenges are actually in a stage
-  (stages have ranged from 8 to 12 challenges). Match it unless the user
-  explicitly asks for a different threshold.
-- `prerequisites` reference another unlock by its `id` — which defaults to
-  a slug of `name` (lowercase, non-alphanumeric runs collapsed to `-`) if
-  the file doesn't set `id` explicitly. Check the target file's slug
-  before wiring up a prerequisite.
+- **Every file sets an explicit `id`, and a published `id` is immutable.**
+  It defaults to a slug of `name`, but relying on that default means a
+  later rename orphans all progress for that unlock, leaves a permanent
+  duplicate ghost card, and silently breaks every `prerequisites` entry
+  pointing at the old id. `name` is just a display label and can change
+  freely; `id` cannot.
+- `requiredPerStage` is set explicitly on every unlock. The default when
+  omitted is "all challenges in the stage", which also means the
+  completion threshold moves whenever the challenge count changes — so
+  never leave it off. Typical values seen so far: 6 for the first unlock
+  of a season, 8 for the second, 10 for the third, but always follow what
+  the user states for the specific unit.
+- `prerequisites` reference another unlock by its `id`, and it must be in
+  the same season. Confirm the target file's actual `id` field before
+  wiring one up — a reference to a nonexistent id makes the unlock
+  permanently unavailable with no error shown.
+- **Every challenge carries a permanent `key`, and challenge ids are
+  `unlockId:s<stage>:<key>`.** Keys were seeded from array position, so
+  they look like indices, but they are NOT positions — they never change
+  once assigned. Reordering, inserting and deleting are all safe provided
+  each row keeps its own key; a new challenge takes one higher than the
+  highest key already used in that stage, and gaps are expected. Never
+  renumber keys back into 0,1,2,… order: that silently moves players'
+  completed checkmarks onto the wrong quests, and it's the one failure
+  the validator can't catch. Editing challenge _text_ is always safe.
+- **Run `npm test` after touching any data file.** It's
+  `scripts/validate-data.mjs` and it checks missing/duplicate keys,
+  unresolvable or cross-season prerequisites, impossible
+  `requiredPerStage`, and stage numbering.
 - Stage numbers start at 1, no gaps.
 - Optional per-challenge `tags: string[]` — see "Search & tags" below.
 - When transcribing quest text from a screenshot: fix obvious typos
@@ -69,7 +90,7 @@ field anywhere, don't — recompute it instead.
 ## Progress-lock rule (important, easy to get wrong)
 
 A user should never be able to uncheck a stage/unlock's progress if doing
-so would silently invalidate a *later* unlock's or stage's progress that
+so would silently invalidate a _later_ unlock's or stage's progress that
 already depends on it being complete. This is implemented as a **dynamic,
 recomputed-on-every-check guard**, not a stored lock flag — see
 `canUndoStage`, `canUncheckChallenge`, `canUndoUnlock` in `progress.ts`.
@@ -90,7 +111,7 @@ UI.
 
 - Default tags (`DEFAULT_TAG_KEYWORDS`) match one or more loose keywords
   against challenge text — a tag can list multiple keywords (e.g. "Open
-  World" matches "open world", "loot site", *and* "rebel").
+  World" matches "open world", "loot site", _and_ "rebel").
 - Custom tags come from a data file's optional per-challenge `tags`
   array, and show up as extra chips automatically.
 - All tag chips are single-select — picking one clears whichever was

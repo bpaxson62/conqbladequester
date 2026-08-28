@@ -1,53 +1,111 @@
 module.exports = {
   name: 'Sipahis',
+  id: 'sipahis',
   rewardType: 'unit',
   tier: 1,
   season: 3,
   prerequisites: [{ unlockId: 'janissaries', requiredStages: 2 }],
   requiredPerStage: 8,
   unitChallenges: [
-    { text: 'In Siege or Field Battles, get an A rating or better 8 times.', stage: 1 },
-    { text: 'In Siege or Field Battles, use artillery to kill 200 troops.', stage: 1 },
-    { text: 'Win 5 Field or Siege Battles.', stage: 1 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 8 battles.', stage: 1 },
-    { text: 'Complete 12 Fief Quests.', stage: 1 },
-    { text: 'Achieve victory at 8 Rebel Camps or Bandit Raids of any difficulty.', stage: 1 },
-    { text: 'Kill 12 heroes in Deathmatch.', stage: 1 },
-    { text: 'Earn 7 "Hat Trick" badges.', stage: 1 },
-    { text: 'Search 20 loot sites in the open world.', stage: 1 },
-    { text: 'In Siege Battles, deploy or destroy an artillery piece in 8 battles.', stage: 1 },
-
-    { text: 'In Siege or Field Battles, use charge-type skills to kill troops 160 times.', stage: 2 },
-    { text: 'In Expeditions, use units from the Cavalry unit tree to kill 1,000 troops.', stage: 2 },
-    { text: 'Raise your hero up 10 levels.', stage: 2 },
-    { text: 'In Free Battles, use units from the Cavalry unit tree to deal 3,000,000 damage.', stage: 2 },
-    { text: 'Take part in 5 Territory Wars.', stage: 2 },
-    { text: 'Use a trebuchet or interrupt a capture in 9 Siege Battles.', stage: 2 },
-    { text: 'In Siege or Field Battles, get an S rating or better 6 times.', stage: 2 },
-    { text: 'In Siege Battles, destroy 7 siege engines or get 40 capture points 7 times.', stage: 2 },
-    { text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1 or above 8 times.", stage: 2 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 240 soldiers in 9 battles.', stage: 2 },
-
-    { text: 'Use four units from different eras in a Siege or Field battle 5 times and win.', stage: 3 },
-    { text: 'Win 4 Free Battles.', stage: 3 },
-    { text: 'In Expeditions, get an A ranking or better 9 times.', stage: 3 },
-    { text: 'Win 4 Deathmatches.', stage: 3 },
-    { text: 'Earn 5 "No Quarter" badges.', stage: 3 },
-    { text: 'Earn 10 "Shatter the Ranks" badges.', stage: 3 },
-    { text: 'In Siege or Field Battles, get ranked in the top 8 8 times.', stage: 3 },
-    { text: 'In Siege Battles, knock down two ladders put up by the enemy in 8 battles.', stage: 3 },
-    { text: 'Use a trebuchet or interrupt a capture in 9 Siege Battles.', stage: 3 },
-    { text: 'In Siege or Field Battles, use an Anadolu Empire unit to kill 600 troops.', stage: 3 },
-
-    { text: 'In Siege or Field Battles, use Sipahis 9 times.', stage: 4 },
-    { text: 'In Siege or Field Battles, use Sipahis to kill 300 troops.', stage: 4 },
-    { text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 7 battles.', stage: 4 },
-    { text: 'In Siege or Field Battles, use the Sipahis Croupade skill to deal 3,000,000 damage.', stage: 4 },
-    { text: 'In Siege Battles, deploy or destroy an artillery piece in 9 battles.', stage: 4 },
-    { text: 'Raise your hero up 10 levels.', stage: 4 },
-    { text: 'Use Sipahis in, and win, 3 Free Battles.', stage: 4 },
-    { text: 'Earn 100 badges.', stage: 4 },
-    { text: 'Take part in 5 Territory Wars.', stage: 4 },
-    { text: 'Win 4 Deathmatches.', stage: 4 }
+    { key: 0, text: 'In Siege or Field Battles, get an A rating or better 8 times.', stage: 1 },
+    { key: 1, text: 'In Siege or Field Battles, use artillery to kill 200 troops.', stage: 1 },
+    { key: 2, text: 'Win 5 Field or Siege Battles.', stage: 1 },
+    {
+      key: 3,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 8 battles.',
+      stage: 1
+    },
+    { key: 4, text: 'Complete 12 Fief Quests.', stage: 1 },
+    {
+      key: 5,
+      text: 'Achieve victory at 8 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 1
+    },
+    { key: 6, text: 'Kill 12 heroes in Deathmatch.', stage: 1 },
+    { key: 7, text: 'Earn 7 "Hat Trick" badges.', stage: 1 },
+    { key: 8, text: 'Search 20 loot sites in the open world.', stage: 1 },
+    {
+      key: 9,
+      text: 'In Siege Battles, deploy or destroy an artillery piece in 8 battles.',
+      stage: 1
+    },
+    {
+      key: 0,
+      text: 'In Siege or Field Battles, use charge-type skills to kill troops 160 times.',
+      stage: 2
+    },
+    {
+      key: 1,
+      text: 'In Expeditions, use units from the Cavalry unit tree to kill 1,000 troops.',
+      stage: 2
+    },
+    { key: 2, text: 'Raise your hero up 10 levels.', stage: 2 },
+    {
+      key: 3,
+      text: 'In Free Battles, use units from the Cavalry unit tree to deal 3,000,000 damage.',
+      stage: 2
+    },
+    { key: 4, text: 'Take part in 5 Territory Wars.', stage: 2 },
+    { key: 5, text: 'Use a trebuchet or interrupt a capture in 9 Siege Battles.', stage: 2 },
+    { key: 6, text: 'In Siege or Field Battles, get an S rating or better 6 times.', stage: 2 },
+    {
+      key: 7,
+      text: 'In Siege Battles, destroy 7 siege engines or get 40 capture points 7 times.',
+      stage: 2
+    },
+    {
+      key: 8,
+      text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1 or above 8 times.",
+      stage: 2
+    },
+    {
+      key: 9,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 240 soldiers in 9 battles.',
+      stage: 2
+    },
+    {
+      key: 0,
+      text: 'Use four units from different eras in a Siege or Field battle 5 times and win.',
+      stage: 3
+    },
+    { key: 1, text: 'Win 4 Free Battles.', stage: 3 },
+    { key: 2, text: 'In Expeditions, get an A ranking or better 9 times.', stage: 3 },
+    { key: 3, text: 'Win 4 Deathmatches.', stage: 3 },
+    { key: 4, text: 'Earn 5 "No Quarter" badges.', stage: 3 },
+    { key: 5, text: 'Earn 10 "Shatter the Ranks" badges.', stage: 3 },
+    { key: 6, text: 'In Siege or Field Battles, get ranked in the top 8 8 times.', stage: 3 },
+    {
+      key: 7,
+      text: 'In Siege Battles, knock down two ladders put up by the enemy in 8 battles.',
+      stage: 3
+    },
+    { key: 8, text: 'Use a trebuchet or interrupt a capture in 9 Siege Battles.', stage: 3 },
+    {
+      key: 9,
+      text: 'In Siege or Field Battles, use an Anadolu Empire unit to kill 600 troops.',
+      stage: 3
+    },
+    { key: 0, text: 'In Siege or Field Battles, use Sipahis 9 times.', stage: 4 },
+    { key: 1, text: 'In Siege or Field Battles, use Sipahis to kill 300 troops.', stage: 4 },
+    {
+      key: 2,
+      text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 7 battles.',
+      stage: 4
+    },
+    {
+      key: 3,
+      text: 'In Siege or Field Battles, use the Sipahis Croupade skill to deal 3,000,000 damage.',
+      stage: 4
+    },
+    {
+      key: 4,
+      text: 'In Siege Battles, deploy or destroy an artillery piece in 9 battles.',
+      stage: 4
+    },
+    { key: 5, text: 'Raise your hero up 10 levels.', stage: 4 },
+    { key: 6, text: 'Use Sipahis in, and win, 3 Free Battles.', stage: 4 },
+    { key: 7, text: 'Earn 100 badges.', stage: 4 },
+    { key: 8, text: 'Take part in 5 Territory Wars.', stage: 4 },
+    { key: 9, text: 'Win 4 Deathmatches.', stage: 4 }
   ]
 }

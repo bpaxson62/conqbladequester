@@ -129,9 +129,7 @@ export function registerIpcHandlers(): void {
 
   ipcMain.handle('seasons:setComplete', (_event, seasonId: string, done: boolean): Unlock[] => {
     const unlocks = store.get('unlocks')
-    const updatedList = unlocks.map((u) =>
-      u.seasonId === seasonId ? setChallenges(u, done) : u
-    )
+    const updatedList = unlocks.map((u) => (u.seasonId === seasonId ? setChallenges(u, done) : u))
     store.set('unlocks', updatedList)
     return updatedList.filter((u) => u.seasonId === seasonId)
   })

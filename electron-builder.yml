@@ -1,5 +1,5 @@
-appId: com.yourname.myelectronapp
-productName: My Electron App
+appId: com.bpaxson62.cbquestlog
+productName: CB Quest Log
 directories:
   buildResources: build
 files:
@@ -20,7 +20,7 @@ extraResources:
 
 # --- Windows ---
 win:
-  executableName: my-electron-app
+  executableName: cb-quest-log
   target:
     - target: nsis
       arch: [x64, arm64]
@@ -32,22 +32,42 @@ nsis:
 
 # --- macOS ---
 mac:
+  artifactName: ${name}-${version}-${arch}.${ext}
   target:
     - target: dmg
       arch: [x64, arm64]
-  category: public.app-category.utilities
+  category: public.app-category.strategy-games
   entitlementsInherit: build/entitlements.mac.plist
   notarize: false
 
 # --- Linux ---
 linux:
+  artifactName: ${name}-${version}-${arch}.${ext}
+  # Without this the Linux binary is named from productName ("CB Quest Log"),
+  # which is not a sane executable name and makes the generated .desktop file
+  # harder to match against the running window.
+  executableName: cb-quest-log
+  icon: build/icon.png
   target:
     - target: AppImage
       arch: [x64, arm64]
     - target: deb
       arch: [x64, arm64]
-  maintainer: you@example.com
-  category: Utility
+    # Fedora/RHEL/openSUSE are RPM distros. Without this the only option there
+    # is the AppImage, which ships no .desktop file unless the user integrates
+    # it by hand — so the desktop shows a generic icon no matter what art we
+    # bundle. Requires `rpm` on the build host (installed in CI).
+    - target: rpm
+      arch: [x64, arm64]
+  maintainer: Brian <bpaxson62@users.noreply.github.com>
+  category: Game
+  synopsis: Quest tracker for Conqueror's Blade seasonal unit unlocks
+  desktop:
+    # GNOME Shell matches a window to its .desktop file to decide what icon to
+    # show in the dash. If nothing matches it falls back to the generic
+    # application-x-executable cog. Electron's WM_CLASS does not necessarily
+    # equal the desktop file's basename, so state it explicitly.
+    StartupWMClass: cb-quest-log
 
 npmRebuild: false
 

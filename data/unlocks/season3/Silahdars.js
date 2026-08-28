@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Silahdars',
+  id: 'silahdars',
   rewardType: 'unit',
   tier: 1,
   season: 3,
@@ -9,82 +10,197 @@ module.exports = {
   ],
   requiredPerStage: 8,
   unitChallenges: [
-    { text: 'In Siege Battles, push a siege tower to the ramparts or destroy an artillery piece 8 times.', stage: 1 },
-    { text: 'Win 6 Field or Siege Battles.', stage: 1 },
-    { text: 'Search 25 loot sites in the open world.', stage: 1 },
-    { text: 'Win 5 Free Battles.', stage: 1 },
-    { text: 'Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty.', stage: 1 },
-    { text: 'Take part in 8 Territory Wars.', stage: 1 },
-    { text: 'Earn 6 "Drop Dead" badges.', stage: 1 },
-    { text: 'In Expeditions, use an Anadolu Empire unit and get an A ranking or better 10 times.', stage: 1 },
-    { text: 'Earn 12 "Shatter the Ranks" badges.', stage: 1 },
-    { text: 'In Siege or Field Battles, you (or your group collectively) defeat 70 heroes.', stage: 1 },
-    { text: 'In Siege or Field Battles, you or your group members get 35 rankings of B+ or better.', stage: 1 },
-    { text: 'In Siege or Field Battles, get ranked in the top 5 10 times.', stage: 1 },
-
-    { text: 'In Free Battles, you or your group collectively kill a total of 80 heroes.', stage: 2 },
-    { text: 'Earn 120 badges.', stage: 2 },
-    { text: 'Take part in 8 Territory Wars.', stage: 2 },
-    { text: 'Join Free Battle 12 times.', stage: 2 },
-    { text: 'Earn 10 "Hat Trick" badges.', stage: 2 },
-    { text: 'In Expeditions, get an S ranking or better 8 times.', stage: 2 },
-    { text: 'In Field or Siege Battles, deploy 15 artillery.', stage: 2 },
-    { text: 'In Siege Battles, use a trebuchet or interrupt a capture 12 times.', stage: 2 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 10 battles.', stage: 2 },
-    { text: 'In Siege or Field Battles, get an A rating or better 10 times.', stage: 2 },
-    { text: 'In 9 Siege Battles, destroy a siege engine or get 40 capture points 9 times.', stage: 2 },
-    { text: 'Raise your hero up 15 levels.', stage: 2 },
-
-    { text: 'In Expeditions, get an A ranking or better 12 times.', stage: 3 },
-    { text: 'In Free Battles, kill 600 troops.', stage: 3 },
-    { text: 'In Deathmatch, you or your group collectively kill a total of 8 heroes.', stage: 3 },
-    { text: 'In Siege or Field Battles, you or your group members get 40 rankings of B+ or better.', stage: 3 },
-    { text: 'Complete 20 Fief Quests.', stage: 3 },
-    { text: 'Take part in 8 Territory Wars.', stage: 3 },
-    { text: 'Raise your hero up 15 levels.', stage: 3 },
-    { text: 'In Siege or Field Battles, use artillery to kill 300 troops.', stage: 3 },
-    { text: 'Use a trebuchet or interrupt a capture in 10 Siege Battles.', stage: 3 },
-    { text: 'In Siege Battles, deploy or destroy an artillery piece in 12 battles.', stage: 3 },
-    { text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1 or above 12 times.", stage: 3 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 240 soldiers in 10 battles.', stage: 3 },
-
-    { text: 'Push a siege tower to the ramparts or destroy a siege engine in 9 Siege Battles.', stage: 4 },
-    { text: 'In Free Battles, get an A ranking or better 8 times.', stage: 4 },
-    { text: 'Achieve victory at 12 Rebel Camps or Bandit Raids of any difficulty.', stage: 4 },
-    { text: 'Raise your hero up 15 levels.', stage: 4 },
-    { text: 'In Deathmatch, you or your group collectively kill a total of 120 heroes.', stage: 4 },
-    { text: 'In Expeditions, use an Anadolu Empire unit to kill 1,200 troops.', stage: 4 },
-    { text: 'Take part in 8 Territory Wars.', stage: 4 },
-    { text: 'Win 7 Field or Siege Battles.', stage: 4 },
-    { text: 'In Siege Battles, deploy or destroy an artillery piece in 12 battles.', stage: 4 },
-    { text: 'Take four units from different eras into a Siege or Field battle 10 times.', stage: 4 },
-    { text: 'In Siege Battles, use artillery to kill 300 troops.', stage: 4 },
-    { text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 10 battles.', stage: 4 },
-
-    { text: 'Earn 40 silver or better badges.', stage: 5 },
-    { text: 'Take part in 8 Territory Wars.', stage: 5 },
-    { text: 'In Expeditions, use Silahdars and get an A ranking or better 10 times.', stage: 5 },
-    { text: 'Complete 20 Fief Quests.', stage: 5 },
-    { text: 'Earn 12 "Shatter the Ranks" badges.', stage: 5 },
-    { text: 'In Free Battles, use the Silahdars Deathstrike skill to deal 4,000,000 damage.', stage: 5 },
-    { text: 'In Free Battles, deal 400,000 Critical damage.', stage: 5 },
-    { text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 12 battles.', stage: 5 },
-    { text: 'In Siege or Field Battles, you or your group members get 40 rankings of B+ or better.', stage: 5 },
-    { text: 'Bring Silahdars to the battlefield and get an S in 7 Field or Siege Battles.', stage: 5 },
-    { text: 'In Siege Battles, deploy or destroy an artillery piece in 10 battles.', stage: 5 },
-    { text: 'Win 6 Deathmatches.', stage: 5 },
-
-    { text: 'Win 5 Deathmatches.', stage: 6 },
-    { text: 'In Free Battles, take Silahdars into battle and win 6 times.', stage: 6 },
-    { text: 'Raise your hero up 15 levels.', stage: 6 },
-    { text: 'Search 20 loot sites in the open world.', stage: 6 },
-    { text: 'In Siege or Field Battles, use the Silahdars unit skill Decapitate to deal 4,500,000 damage.', stage: 6 },
-    { text: 'Earn 8 "No Quarter" badges.', stage: 6 },
-    { text: 'Earn 12 "Shatter the Ranks" badges.', stage: 6 },
-    { text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 10 battles.', stage: 6 },
-    { text: 'Use a trebuchet or interrupt a capture in 13 Siege Battles.', stage: 6 },
-    { text: 'In Siege or Field Battles, use Silahdars to kill 400 troops.', stage: 6 },
-    { text: 'In Siege or Field Battles, take a Silahdars into battle and win 7 times.', stage: 6 },
-    { text: 'In Siege or Field Battles, take Silahdars into battle and get a kill/death ratio greater than 1 11 times.', stage: 6 }
+    {
+      key: 0,
+      text: 'In Siege Battles, push a siege tower to the ramparts or destroy an artillery piece 8 times.',
+      stage: 1
+    },
+    { key: 1, text: 'Win 6 Field or Siege Battles.', stage: 1 },
+    { key: 2, text: 'Search 25 loot sites in the open world.', stage: 1 },
+    { key: 3, text: 'Win 5 Free Battles.', stage: 1 },
+    {
+      key: 4,
+      text: 'Achieve victory at 10 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 1
+    },
+    { key: 5, text: 'Take part in 8 Territory Wars.', stage: 1 },
+    { key: 6, text: 'Earn 6 "Drop Dead" badges.', stage: 1 },
+    {
+      key: 7,
+      text: 'In Expeditions, use an Anadolu Empire unit and get an A ranking or better 10 times.',
+      stage: 1
+    },
+    { key: 8, text: 'Earn 12 "Shatter the Ranks" badges.', stage: 1 },
+    {
+      key: 9,
+      text: 'In Siege or Field Battles, you (or your group collectively) defeat 70 heroes.',
+      stage: 1
+    },
+    {
+      key: 10,
+      text: 'In Siege or Field Battles, you or your group members get 35 rankings of B+ or better.',
+      stage: 1
+    },
+    { key: 11, text: 'In Siege or Field Battles, get ranked in the top 5 10 times.', stage: 1 },
+    {
+      key: 0,
+      text: 'In Free Battles, you or your group collectively kill a total of 80 heroes.',
+      stage: 2
+    },
+    { key: 1, text: 'Earn 120 badges.', stage: 2 },
+    { key: 2, text: 'Take part in 8 Territory Wars.', stage: 2 },
+    { key: 3, text: 'Join Free Battle 12 times.', stage: 2 },
+    { key: 4, text: 'Earn 10 "Hat Trick" badges.', stage: 2 },
+    { key: 5, text: 'In Expeditions, get an S ranking or better 8 times.', stage: 2 },
+    { key: 6, text: 'In Field or Siege Battles, deploy 15 artillery.', stage: 2 },
+    {
+      key: 7,
+      text: 'In Siege Battles, use a trebuchet or interrupt a capture 12 times.',
+      stage: 2
+    },
+    {
+      key: 8,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 10 battles.',
+      stage: 2
+    },
+    { key: 9, text: 'In Siege or Field Battles, get an A rating or better 10 times.', stage: 2 },
+    {
+      key: 10,
+      text: 'In 9 Siege Battles, destroy a siege engine or get 40 capture points 9 times.',
+      stage: 2
+    },
+    { key: 11, text: 'Raise your hero up 15 levels.', stage: 2 },
+    { key: 0, text: 'In Expeditions, get an A ranking or better 12 times.', stage: 3 },
+    { key: 1, text: 'In Free Battles, kill 600 troops.', stage: 3 },
+    {
+      key: 2,
+      text: 'In Deathmatch, you or your group collectively kill a total of 8 heroes.',
+      stage: 3
+    },
+    {
+      key: 3,
+      text: 'In Siege or Field Battles, you or your group members get 40 rankings of B+ or better.',
+      stage: 3
+    },
+    { key: 4, text: 'Complete 20 Fief Quests.', stage: 3 },
+    { key: 5, text: 'Take part in 8 Territory Wars.', stage: 3 },
+    { key: 6, text: 'Raise your hero up 15 levels.', stage: 3 },
+    { key: 7, text: 'In Siege or Field Battles, use artillery to kill 300 troops.', stage: 3 },
+    { key: 8, text: 'Use a trebuchet or interrupt a capture in 10 Siege Battles.', stage: 3 },
+    {
+      key: 9,
+      text: 'In Siege Battles, deploy or destroy an artillery piece in 12 battles.',
+      stage: 3
+    },
+    {
+      key: 10,
+      text: "In Siege or Field Battles, have any unit's kill/death ratio reach 1 or above 12 times.",
+      stage: 3
+    },
+    {
+      key: 11,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 240 soldiers in 10 battles.',
+      stage: 3
+    },
+    {
+      key: 0,
+      text: 'Push a siege tower to the ramparts or destroy a siege engine in 9 Siege Battles.',
+      stage: 4
+    },
+    { key: 1, text: 'In Free Battles, get an A ranking or better 8 times.', stage: 4 },
+    {
+      key: 2,
+      text: 'Achieve victory at 12 Rebel Camps or Bandit Raids of any difficulty.',
+      stage: 4
+    },
+    { key: 3, text: 'Raise your hero up 15 levels.', stage: 4 },
+    {
+      key: 4,
+      text: 'In Deathmatch, you or your group collectively kill a total of 120 heroes.',
+      stage: 4
+    },
+    { key: 5, text: 'In Expeditions, use an Anadolu Empire unit to kill 1,200 troops.', stage: 4 },
+    { key: 6, text: 'Take part in 8 Territory Wars.', stage: 4 },
+    { key: 7, text: 'Win 7 Field or Siege Battles.', stage: 4 },
+    {
+      key: 8,
+      text: 'In Siege Battles, deploy or destroy an artillery piece in 12 battles.',
+      stage: 4
+    },
+    {
+      key: 9,
+      text: 'Take four units from different eras into a Siege or Field battle 10 times.',
+      stage: 4
+    },
+    { key: 10, text: 'In Siege Battles, use artillery to kill 300 troops.', stage: 4 },
+    {
+      key: 11,
+      text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 10 battles.',
+      stage: 4
+    },
+    { key: 0, text: 'Earn 40 silver or better badges.', stage: 5 },
+    { key: 1, text: 'Take part in 8 Territory Wars.', stage: 5 },
+    {
+      key: 2,
+      text: 'In Expeditions, use Silahdars and get an A ranking or better 10 times.',
+      stage: 5
+    },
+    { key: 3, text: 'Complete 20 Fief Quests.', stage: 5 },
+    { key: 4, text: 'Earn 12 "Shatter the Ranks" badges.', stage: 5 },
+    {
+      key: 5,
+      text: 'In Free Battles, use the Silahdars Deathstrike skill to deal 4,000,000 damage.',
+      stage: 5
+    },
+    { key: 6, text: 'In Free Battles, deal 400,000 Critical damage.', stage: 5 },
+    {
+      key: 7,
+      text: 'In Siege or Field Battles, earn 40 capture points or interrupt a capture in 12 battles.',
+      stage: 5
+    },
+    {
+      key: 8,
+      text: 'In Siege or Field Battles, you or your group members get 40 rankings of B+ or better.',
+      stage: 5
+    },
+    {
+      key: 9,
+      text: 'Bring Silahdars to the battlefield and get an S in 7 Field or Siege Battles.',
+      stage: 5
+    },
+    {
+      key: 10,
+      text: 'In Siege Battles, deploy or destroy an artillery piece in 10 battles.',
+      stage: 5
+    },
+    { key: 11, text: 'Win 6 Deathmatches.', stage: 5 },
+    { key: 0, text: 'Win 5 Deathmatches.', stage: 6 },
+    { key: 1, text: 'In Free Battles, take Silahdars into battle and win 6 times.', stage: 6 },
+    { key: 2, text: 'Raise your hero up 15 levels.', stage: 6 },
+    { key: 3, text: 'Search 20 loot sites in the open world.', stage: 6 },
+    {
+      key: 4,
+      text: 'In Siege or Field Battles, use the Silahdars unit skill Decapitate to deal 4,500,000 damage.',
+      stage: 6
+    },
+    { key: 5, text: 'Earn 8 "No Quarter" badges.', stage: 6 },
+    { key: 6, text: 'Earn 12 "Shatter the Ranks" badges.', stage: 6 },
+    {
+      key: 7,
+      text: 'In Siege or Field Battles, you or your group collectively kill a total of 8 heroes in 10 battles.',
+      stage: 6
+    },
+    { key: 8, text: 'Use a trebuchet or interrupt a capture in 13 Siege Battles.', stage: 6 },
+    { key: 9, text: 'In Siege or Field Battles, use Silahdars to kill 400 troops.', stage: 6 },
+    {
+      key: 10,
+      text: 'In Siege or Field Battles, take a Silahdars into battle and win 7 times.',
+      stage: 6
+    },
+    {
+      key: 11,
+      text: 'In Siege or Field Battles, take Silahdars into battle and get a kill/death ratio greater than 1 11 times.',
+      stage: 6
+    }
   ]
 }
