@@ -13,7 +13,7 @@ onMounted(() => {
 <template>
   <div class="app">
     <header>
-      <h1>Quest Tracker</h1>
+      <h1>CB Quest Log</h1>
     </header>
 
     <main v-if="store.loaded">

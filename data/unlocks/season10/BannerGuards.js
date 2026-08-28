@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Banner Guards',
+  id: 'banner-guards',
   rewardType: 'unit',
   tier: 1,
   season: 10,

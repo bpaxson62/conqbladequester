@@ -8,6 +8,7 @@ import { syncBundledContent } from './content'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
+    title: 'CB Quest Log',
     width: 1320,
     height: 860,
     minWidth: 1000,
@@ -40,9 +41,25 @@ function createWindow(): void {
   }
 }
 
+// Only one copy of the app may run at a time: two instances would both
+// write the same electron-store progress file, and the last one to save
+// would silently clobber the other's checked-off quests. A second launch
+// instead focuses the window that's already open.
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+  app.quit()
+}
+
+app.on('second-instance', () => {
+  const [existing] = BrowserWindow.getAllWindows()
+  if (!existing) return
+  if (existing.isMinimized()) existing.restore()
+  existing.focus()
+})
+
 app.whenReady().then(async () => {
   // Windows-specific app user model id for taskbar grouping / notifications
-  electronApp.setAppUserModelId('com.yourname.myelectronapp')
+  electronApp.setAppUserModelId('com.bpaxson62.cbquestlog')
 
   // Default open/close DevTools shortcut (F12) and other dev conveniences.
   app.on('browser-window-created', (_, window) => {

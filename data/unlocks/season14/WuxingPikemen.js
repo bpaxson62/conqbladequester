@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Wuxing Pikemen',
+  id: 'wuxing-pikemen',
   rewardType: 'unit',
   tier: 1,
   season: 14,

@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Namkhan Archers',
+  id: 'namkhan-archers',
   rewardType: 'unit',
   tier: 1,
   season: 1,

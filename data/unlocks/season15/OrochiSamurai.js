@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Orochi Samurai',
+  id: 'orochi-samurai',
   rewardType: 'unit',
   tier: 1,
   season: 15,

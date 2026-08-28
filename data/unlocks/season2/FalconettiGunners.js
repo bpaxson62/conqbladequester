@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Falconetti Gunners',
+  id: 'falconetti-gunners',
   rewardType: 'unit',
   tier: 1,
   season: 2,

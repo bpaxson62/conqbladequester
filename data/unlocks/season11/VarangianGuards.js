@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Varangian Guards',
+  id: 'varangian-guards',
   rewardType: 'unit',
   tier: 1,
   season: 11,

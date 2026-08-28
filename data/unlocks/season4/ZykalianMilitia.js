@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Zykalian Militia',
+  id: 'zykalian-militia',
   rewardType: 'unit',
   tier: 1,
   season: 4,

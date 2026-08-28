@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Condottieri Guards',
+  id: 'condottieri-guards',
   rewardType: 'unit',
   tier: 1,
   season: 2,

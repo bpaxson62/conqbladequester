@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Onna-musha',
+  id: 'onna-musha',
   rewardType: 'unit',
   tier: 1,
   season: 15,

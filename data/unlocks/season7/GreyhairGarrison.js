@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Greyhair Garrison',
+  id: 'greyhair-garrison',
   rewardType: 'unit',
   tier: 1,
   season: 7,

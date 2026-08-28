@@ -51,14 +51,28 @@ field anywhere, don't — recompute it instead.
 
 ## Conventions to follow when adding/editing unlock data
 
-- `requiredPerStage: 6` is the established convention for every current
-  unlock, regardless of how many challenges are actually in a stage
-  (stages have ranged from 8 to 12 challenges). Match it unless the user
-  explicitly asks for a different threshold.
-- `prerequisites` reference another unlock by its `id` — which defaults to
-  a slug of `name` (lowercase, non-alphanumeric runs collapsed to `-`) if
-  the file doesn't set `id` explicitly. Check the target file's slug
-  before wiring up a prerequisite.
+- **Every file sets an explicit `id`, and a published `id` is immutable.**
+  It defaults to a slug of `name`, but relying on that default means a
+  later rename orphans all progress for that unlock, leaves a permanent
+  duplicate ghost card, and silently breaks every `prerequisites` entry
+  pointing at the old id. `name` is just a display label and can change
+  freely; `id` cannot.
+- `requiredPerStage` is set explicitly on every unlock. The default when
+  omitted is "all challenges in the stage", which also means the
+  completion threshold moves whenever the challenge count changes — so
+  never leave it off. Typical values seen so far: 6 for the first unlock
+  of a season, 8 for the second, 10 for the third, but always follow what
+  the user states for the specific unit.
+- `prerequisites` reference another unlock by its `id`, and it must be in
+  the same season. Confirm the target file's actual `id` field before
+  wiring one up — a reference to a nonexistent id makes the unlock
+  permanently unavailable with no error shown.
+- **Challenge ids are `unlockId:s<stage>:<index>`, where index is the
+  array position.** Progress is matched on that, so within an existing
+  stage you may only APPEND. Inserting, deleting, or reordering silently
+  re-attaches players' checkmarks to the wrong quests. Editing challenge
+  *text* in place is safe (ids don't depend on text), which is why typo
+  fixes are fine. See `data/README.md` for the full table.
 - Stage numbers start at 1, no gaps.
 - Optional per-challenge `tags: string[]` — see "Search & tags" below.
 - When transcribing quest text from a screenshot: fix obvious typos

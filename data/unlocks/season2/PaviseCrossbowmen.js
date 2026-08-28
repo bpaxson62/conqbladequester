@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Pavise Crossbowmen',
+  id: 'pavise-crossbowmen',
   rewardType: 'unit',
   tier: 1,
   season: 2,

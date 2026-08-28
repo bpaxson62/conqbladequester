@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Crescent Monks',
+  id: 'crescent-monks',
   rewardType: 'unit',
   tier: 1,
   season: 14,

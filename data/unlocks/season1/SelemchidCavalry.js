@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Selemchid Cavalry',
+  id: 'selemchid-cavalry',
   rewardType: 'unit',
   tier: 1,
   season: 1,

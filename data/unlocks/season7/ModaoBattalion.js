@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Modao Battalion',
+  id: 'modao-battalion',
   rewardType: 'unit',
   tier: 1,
   season: 7,

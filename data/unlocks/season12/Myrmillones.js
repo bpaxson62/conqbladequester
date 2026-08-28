@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Myrmillones',
+  id: 'myrmillones',
   rewardType: 'unit',
   tier: 1,
   season: 12,

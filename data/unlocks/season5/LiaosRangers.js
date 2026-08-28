@@ -1,5 +1,6 @@
 module.exports = {
   name: "Liao's Rangers",
+  id: 'liao-s-rangers',
   rewardType: 'unit',
   tier: 1,
   season: 5,

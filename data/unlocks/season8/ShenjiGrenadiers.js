@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Shenji Grenadiers',
+  id: 'shenji-grenadiers',
   rewardType: 'unit',
   tier: 1,
   season: 8,

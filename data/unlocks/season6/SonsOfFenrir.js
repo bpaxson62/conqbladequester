@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Sons of Fenrir',
+  id: 'sons-of-fenrir',
   rewardType: 'unit',
   tier: 1,
   season: 6,

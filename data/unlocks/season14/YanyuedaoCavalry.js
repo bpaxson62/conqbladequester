@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Yanyuedao Cavalry',
+  id: 'yanyuedao-cavalry',
   rewardType: 'unit',
   tier: 1,
   season: 14,

@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Fortebraccio Pikemen',
+  id: 'fortebraccio-pikemen',
   rewardType: 'unit',
   tier: 1,
   season: 2,

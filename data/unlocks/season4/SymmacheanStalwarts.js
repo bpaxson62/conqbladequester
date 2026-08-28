@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Symmachean Stalwarts',
+  id: 'symmachean-stalwarts',
   rewardType: 'unit',
   tier: 1,
   season: 4,

@@ -1,5 +1,6 @@
 module.exports = {
   name: 'Kriegsbruders',
+  id: 'kriegsbruders',
   rewardType: 'unit',
   tier: 1,
   season: 16,
