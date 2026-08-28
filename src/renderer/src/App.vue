@@ -1,24 +1,37 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import Versions from './components/Versions.vue'
+import { onMounted } from 'vue'
+import { useUnlockStore } from './stores/unlocks'
+import SeasonsPage from './components/SeasonsPage.vue'
 
-const appVersion = ref('')
+const store = useUnlockStore()
 
-onMounted(async () => {
-  appVersion.value = await window.api.getVersion()
+onMounted(() => {
+  store.load()
 })
 </script>
 
 <template>
   <div class="app">
-    <h1>My Electron App</h1>
-    <p>Edit <code>src/renderer/src/App.vue</code> and save to see changes.</p>
-    <p>App version: {{ appVersion }}</p>
-    <Versions />
+    <header>
+      <h1>Quest Tracker</h1>
+    </header>
+
+    <main v-if="store.loaded">
+      <SeasonsPage />
+    </main>
+    <main
+      v-else
+      class="loading"
+    >
+      Loading…
+    </main>
   </div>
 </template>
 
 <style>
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family:
@@ -30,12 +43,28 @@ body {
   background: #1e1f22;
   color: #e6e6e6;
 }
+</style>
+
+<style scoped>
 .app {
-  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-code {
-  background: #2b2d31;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
+header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #2b2d31;
+}
+h1 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+main {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+.loading {
+  color: #9a9ba0;
 }
 </style>

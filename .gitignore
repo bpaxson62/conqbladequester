@@ -1,6 +1,8 @@
 node_modules
 dist
 out
+out_stale_*
+electron.vite.config.*.mjs
 .env
 .env.*
 !.env.example

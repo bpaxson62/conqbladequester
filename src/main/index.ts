@@ -3,16 +3,20 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { initAutoUpdater } from './updater'
+import { registerIpcHandlers } from './ipc'
+import { syncBundledContent } from './content'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 700,
+    width: 1320,
+    height: 860,
+    minWidth: 1000,
+    minHeight: 650,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
+      preload: join(__dirname, '../preload/index.mjs'),
       sandbox: false,
       contextIsolation: true,
       nodeIntegration: false
@@ -36,7 +40,7 @@ function createWindow(): void {
   }
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // Windows-specific app user model id for taskbar grouping / notifications
   electronApp.setAppUserModelId('com.yourname.myelectronapp')
 
@@ -45,8 +49,13 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // Example IPC handler — replace with real app logic.
   ipcMain.handle('app:getVersion', () => app.getVersion())
+  registerIpcHandlers()
+
+  // Merge bundled quest data (data/unlocks/*) into the local store before
+  // the window loads, so the app opens already populated — no manual
+  // import needed for content the app ships with.
+  await syncBundledContent()
 
   createWindow()
 

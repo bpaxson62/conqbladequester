@@ -12,6 +12,12 @@ files:
 asarUnpack:
   - resources/**
 
+# Bundled quest data (data/unlocks/*, data/seasons.json), read at startup
+# so every install ships pre-populated — see src/main/content.ts.
+extraResources:
+  - from: data
+    to: data
+
 # --- Windows ---
 win:
   executableName: my-electron-app
