@@ -127,14 +127,16 @@ function isMatched(challenge: Challenge): boolean {
         <span class="reward-icon">{{ rewardIcon[unlock.rewardType] ?? '🎁' }}</span>
         <div>
           <h3>{{ unlock.name }}</h3>
-          <p class="meta">
-            Tier {{ unlock.tier }}
+          <p
+            v-if="isUnlockComplete(unlock) || !available"
+            class="meta"
+          >
             <span
               v-if="isUnlockComplete(unlock)"
               class="badge complete"
             >Complete</span>
             <span
-              v-else-if="!available"
+              v-else
               class="badge locked"
             >Locked</span>
           </p>
