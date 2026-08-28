@@ -18,7 +18,8 @@ const DEFAULT_TAG_KEYWORDS: Record<string, string[]> = {
   'Free Battle': ['free battle'],
   'Death Match': ['death match'],
   'Territory War': ['territory war'],
-  'Open World': ['open world', 'loot site', 'rebel']
+  'Open World': ['open world', 'loot site', 'rebel'],
+  'Fief Quests': ['fief quest']
 }
 
 export const DEFAULT_TAGS = Object.keys(DEFAULT_TAG_KEYWORDS)

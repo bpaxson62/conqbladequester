@@ -56,12 +56,12 @@ function stageAvailable(stage: number): boolean {
 }
 
 function selectStage(stage: Stage): void {
-  if (!stageAvailable(stage.stage)) return
+  if (!props.available || !stageAvailable(stage.stage)) return
   activeStage.value = stage.stage
 }
 
 function toggle(stage: number, challengeId: string): void {
-  if (!stageAvailable(stage)) return
+  if (!props.available || !stageAvailable(stage)) return
   const stageObj = sortedStages.value.find((s) => s.stage === stage)
   const challenge = stageObj?.challenges.find((c) => c.id === challengeId)
   if (
@@ -80,13 +80,14 @@ function toggle(stage: number, challengeId: string): void {
 // quest individually. Unchecking is blocked once something later relies
 // on this stage staying complete.
 function toggleWholeStage(stage: Stage): void {
-  if (!stageAvailable(stage.stage)) return
+  if (!props.available || !stageAvailable(stage.stage)) return
   const complete = isStageComplete(stage)
   if (complete && !canUndoStage(props.unlock, stage, props.seasonUnlocks)) return
   store.setStageComplete(props.unlock.id, stage.stage, !complete)
 }
 
 function toggleWholeUnlock(): void {
+  if (!props.available) return
   const complete = isUnlockComplete(props.unlock)
   if (complete && !canUndoUnlock(props.unlock, props.seasonUnlocks)) return
   store.setUnlockComplete(props.unlock.id, !complete)
