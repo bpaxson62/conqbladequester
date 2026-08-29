@@ -48,17 +48,21 @@ linux:
   # harder to match against the running window.
   executableName: cb-quest-log
   icon: build/icon.png
+  # x64 only. Conqueror's Blade is a Windows game that Linux players run
+  # through Proton, so an arm64 Linux desktop audience is effectively zero,
+  # and cross-building arm64 deb/rpm on an x64 CI runner is a real source of
+  # build failures. Not worth trading a working release for.
   target:
     - target: AppImage
-      arch: [x64, arm64]
+      arch: [x64]
     - target: deb
-      arch: [x64, arm64]
+      arch: [x64]
     # Fedora/RHEL/openSUSE are RPM distros. Without this the only option there
     # is the AppImage, which ships no .desktop file unless the user integrates
     # it by hand — so the desktop shows a generic icon no matter what art we
-    # bundle. Requires `rpm` on the build host (installed in CI).
+    # bundle. Needs rpmbuild on the build host (installed in CI).
     - target: rpm
-      arch: [x64, arm64]
+      arch: [x64]
   maintainer: Brian <bpaxson62@users.noreply.github.com>
   category: Game
   synopsis: Quest tracker for Conqueror's Blade seasonal unit unlocks

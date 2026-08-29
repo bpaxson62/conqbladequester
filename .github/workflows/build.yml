@@ -32,11 +32,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # electron-builder shells out to rpmbuild for the .rpm target; the
-      # ubuntu runner image doesn't ship it.
-      - name: Install rpm tooling (Linux only)
+      # The .deb and .rpm targets are both produced by fpm, which needs
+      # fakeroot (deb) and rpmbuild (rpm). The AppImage target doesn't use
+      # fpm, which is why it can succeed while those two silently don't.
+      - name: Install Linux packaging tooling
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y rpm
+        run: sudo apt-get update && sudo apt-get install -y rpm fakeroot binutils
 
       - name: Lint
         run: npm run lint
