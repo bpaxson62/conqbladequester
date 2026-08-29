@@ -1,5 +1,11 @@
 # Quest data
 
+> **On rights:** the challenge text in these files is transcribed from
+> Conqueror's Blade and remains the property of Booming Games / MY.GAMES.
+> It is included so the tracker can describe the quests it tracks. The
+> repository's MIT licence covers the application code only — it does not
+> apply to this directory, and nothing here is offered for reuse.
+
 Everything in `data/unlocks/` ships with the app and loads automatically on
 startup — no manual import needed. This is the actual game content
 (seasons, unlocks, stages, challenges); it's separate from a player's own

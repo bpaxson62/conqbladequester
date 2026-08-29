@@ -156,4 +156,12 @@ Honest list of what isn't done yet:
 
 ## License
 
-[MIT](./LICENSE)
+The **application code** is [MIT](./LICENSE).
+
+The **quest data** under `data/unlocks/` is not. Those files transcribe
+in-game challenge text, which remains the property of Booming Games /
+MY.GAMES. It's included here so the tracker can describe the quests it
+tracks, and it is not licensed under MIT or offered for reuse — the MIT
+grant covers the software only. This project claims no rights over any
+Conqueror's Blade content and will honour any request from the rights
+holders to remove it.
