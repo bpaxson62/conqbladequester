@@ -1,3 +1,9 @@
+Applies to the application source code in this repository.
+
+It does NOT apply to the quest data under data/unlocks/, which transcribes
+in-game text belonging to Booming Games / MY.GAMES and is included for
+descriptive purposes only. See README.md.
+
 MIT License
 
 Copyright (c) 2026 Brian (bpaxson62)

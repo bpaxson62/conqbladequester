@@ -1,6 +1,6 @@
 {
   "name": "conqbladequester",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A desktop quest tracker for Conqueror's Blade seasonal unit unlocks.",
   "main": "./out/main/index.js",
   "author": "Brian",
